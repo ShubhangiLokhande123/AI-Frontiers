@@ -34,10 +34,3 @@ Visualizations of current enterprise use case distributions and dominant archite
 - **Tailwind CSS:** Responsive, modern styling.
 - **Chart.js:** Interactive data visualizations.
 
-## 🚀 How to Run Locally
-1. Clone this repository to your local machine.
-2. Open `index.html` directly in your browser, or start a local HTTP server:
-   ```bash
-   python -m http.server 3000
-   ```
-3. Navigate to `http://localhost:3000` to view the application.
