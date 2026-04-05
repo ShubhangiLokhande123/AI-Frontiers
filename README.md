@@ -3,7 +3,7 @@
 Welcome to the **AI Frontiers** interactive research report! This repository contains a single-page application (SPA) built with HTML, Tailwind CSS, and Chart.js. The application serves as an interactive, educational overview of the key concepts driving modern Artificial Intelligence.
 
 ## 🌐 Website Link
-[Live Demo Website](https://example.com)
+<a href="https://example.com" target="_blank" rel="noopener noreferrer">Live Demo Website</a>
 
 ## 📌 Features & Modules
 The application is structured into five core thematic modules:
