@@ -28,6 +28,7 @@
             }
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
     <style>
         body { background-color: #0F172A; color: #F8FAFC; }
         
@@ -42,12 +43,9 @@
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
-        }
+            height: 260px;   /* tighter height */
+            max-height: 280px;
+        }   
         @media (min-width: 768px) {
             .chart-container { height: 400px; }
         }
@@ -86,15 +84,6 @@
 </head>
 <body class="font-sans antialiased flex flex-col md:flex-row min-h-screen">
 
-<!-- Chosen Palette: Dark & Vibrant (Base: #0F172A, Surface: #1E293B, Accents: Cyan #06B6D4, Violet #8B5CF6, Pink #EC4899) -->
-<!-- Application Structure Plan: The SPA uses a dashboard/sidebar navigation pattern, dividing the research notes into four distinct thematic sections plus an overview. This structure was chosen because these four AI topics (CNNs, GenAI, Ethics, Transformers) are highly distinct yet interconnected domains. A tabbed interface prevents cognitive overload, allowing users to focus on one complex technical concept at a time. The interactive elements within each tab (charts, toggles, hover states) are designed to make abstract computer science concepts concrete and explorable. -->
-<!-- Visualization & Content Choices: 
-1. CNN Section: Line chart used to show ImageNet accuracy progression over time, emphasizing historical improvement. HTML/CSS architecture diagram to visualize the layers of a CNN interactively. NO SVG/Mermaid.
-2. GenAI Section: Doughnut chart to visualize the distribution of use cases across modalities. Interactive toggle buttons to switch text blocks explaining different GenAI architectures (GAN, VAE, Diffusion). NO SVG/Mermaid.
-3. Ethics Section: Polar Area chart chosen to map the multidimensional severity of different ethical concerns (Bias, Privacy, etc.), allowing quick visual comparison of risk areas. Accordion-style layout for mitigation strategies. NO SVG/Mermaid.
-4. Transformer Section: Bar chart with logarithmic scaling to demonstrate the exponential growth in model parameters (Foundation Models). Step-by-step interactive text highlighting to explain the self-attention mechanism. NO SVG/Mermaid. -->
-<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
     <nav class="w-full md:w-64 bg-surface border-r border-border flex flex-col p-6 sticky top-0 md:h-screen overflow-y-auto shrink-0 z-10 shadow-sm">
         <div class="mb-8">
             <h1 class="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-accentA via-accentB to-accentC bg-clip-text text-transparent pb-1">AI Frontiers</h1>
@@ -123,7 +112,7 @@
         </div>
 
         <div class="mt-auto hidden md:block pt-8 text-xs text-secondary border-t border-border mt-8">
-            <p>Data synthesized for educational exploration.</p>
+            <p>Data synthesized for educational exploration. Shubhangi Lokhande created with 💗</p>
         </div>
     </nav>
 
@@ -209,7 +198,264 @@
                         Fully Connected<br><span class="text-xs font-normal text-primary">Maps features to class probabilities</span>
                     </div>
                 </div>
+                
             </div>
+            
+            <div class="bg-surface rounded-xl p-6 border border-border shadow-sm mt-8">
+                <h3 class="text-xl font-bold mb-4">Training & Evaluation in CNNs</h3>
+
+                <!-- LOSS FUNCTIONS -->
+                <div class="grid md:grid-cols-2 gap-6 text-sm text-secondary">
+                    <div>
+                        <h4 class="text-primary font-semibold mb-2">Loss Functions</h4>
+                        <ul class="space-y-3">
+
+                            <li>
+                                <strong>Cross-Entropy Loss:</strong>
+                                <div class="text-xs text-secondary mt-1">Measures difference between predicted probability and true label.</div>
+                                <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentA">
+                                    L = - Σ y log(p)
+                                </div>
+                            </li>
+
+                            <li>
+                                <strong>Focal Loss:</strong>
+                                <div class="text-xs text-secondary mt-1">Focuses more on hard examples, reduces impact of easy ones.</div>
+                                <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentB">
+                                    FL = (1 − p)^γ log(p)
+                                </div>
+                            </li>
+
+                            <li>
+                                <strong>Dice Loss:</strong>
+                                <div class="text-xs text-secondary mt-1">Maximizes overlap between predicted and true regions.</div>
+                                <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentC">
+                                    Dice = 2|X∩Y| / (|X| + |Y|)
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <!-- METRICS -->
+                    <div>
+                        <h4 class="text-primary font-semibold mb-2">Evaluation Metrics</h4>
+                        <ul class="space-y-3">
+
+                            <li>
+                                <strong>Accuracy:</strong>
+                                <div class="text-xs text-secondary">Correct predictions over total samples.</div>
+                                <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentA">
+                                    (TP + TN) / Total
+                                </div>
+                            </li>
+
+                            <li>
+                                <strong>Precision:</strong>
+                                <div class="text-xs text-secondary">How many predicted positives are correct.</div>
+                                <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentB">
+                                    TP / (TP + FP)
+                                </div>
+                            </li>
+
+                            <li>
+                                <strong>Recall:</strong>
+                                <div class="text-xs text-secondary">How many actual positives are captured.</div>
+                                <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentC">
+                                    TP / (TP + FN)
+                                </div>
+                            </li>
+
+                            <li>
+                                <strong>F1 Score:</strong>
+                                <div class="text-xs text-secondary">Balance between precision and recall.</div>
+                                <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentA">
+                                    2PR / (P + R)
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- VISUAL INTUITION -->
+                <div class="mt-8">
+                    <h4 class="text-primary font-semibold mb-3">Metric Intuition (Visual)</h4>
+
+                    <div class="space-y-4 text-xs">
+
+                        <div>
+                            <span class="text-secondary">Precision</span>
+                            <div class="w-full bg-slate-700 rounded h-2 mt-1">
+                                <div class="bg-accentB h-2 rounded" style="width: 70%"></div>
+                            </div>
+                            <span class="text-secondary">70% correct among predicted positives</span>
+                        </div>
+
+                        <div>
+                            <span class="text-secondary">Recall</span>
+                            <div class="w-full bg-slate-700 rounded h-2 mt-1">
+                                <div class="bg-accentC h-2 rounded" style="width: 85%"></div>
+                            </div>
+                            <span class="text-secondary">85% of actual positives captured</span>
+                        </div>
+
+                        <div>
+                            <span class="text-secondary">F1 Score</span>
+                            <div class="w-full bg-slate-700 rounded h-2 mt-1">
+                                <div class="bg-accentA h-2 rounded" style="width: 76%"></div>
+                            </div>
+                            <span class="text-secondary">Balanced performance</span>
+                        </div>
+
+                        <!-- NEW ROC-AUC BLOCK -->
+                        <div>
+                            <span class="text-secondary">ROC-AUC</span>
+                            <div class="w-full bg-slate-700 rounded h-2 mt-1">
+                                <div class="bg-gradient-to-r from-accentB to-accentC h-2 rounded" style="width: 90%"></div>
+                            </div>
+                            <span class="text-secondary block mt-1">
+                                Evaluates model’s ability to distinguish between classes across all thresholds (higher is better).
+                            </span>
+
+                            <!-- MINI VISUAL -->
+                            <div class="mt-2 bg-slate-800 p-2 rounded text-[10px] text-secondary">
+                                TPR (Recall) ↑ vs FPR → &nbsp; | &nbsp; AUC ≈ 0.90 → Strong classifier
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TRANSFER LEARNING -->
+                <div class="mt-8 text-sm text-secondary">
+                    <h4 class="text-primary font-semibold mb-3">Transfer Learning Strategy</h4>
+
+                    <div class="grid md:grid-cols-3 gap-4 text-center text-xs">
+
+                        <div class="bg-slate-800 p-3 rounded border border-slate-600">
+                            <div class="text-accentA font-bold">Pretrained</div>
+                            <div class="mt-1">Use ImageNet-trained weights</div>
+                        </div>
+
+                        <div class="bg-slate-800 p-3 rounded border border-slate-600">
+                            <div class="text-accentB font-bold">Feature Extraction</div>
+                            <div class="mt-1">Freeze layers, use as feature generator</div>
+                        </div>
+
+                        <div class="bg-slate-800 p-3 rounded border border-slate-600">
+                            <div class="text-accentC font-bold">Fine-Tuning</div>
+                            <div class="mt-1">Update last layers for new task</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-6 border border-border shadow-sm mt-8 pb-4">
+                <h3 class="text-xl font-bold mb-4 text-center">ROC & Precision-Recall Curves</h3>
+                <p class="text-sm text-secondary text-center mb-4">
+                    ROC shows trade-off between TPR and FPR, while Precision-Recall focuses on performance in imbalanced datasets.
+                </p>
+
+                <div class="mt-6 text-center">
+                    <label class="text-sm text-secondary">Threshold: <span id="thresholdVal">0.50</span></label>
+                    <input 
+                        type="range" 
+                        min="0" max="1" step="0.01" value="0.5"
+                        class="w-full mt-2"
+                        oninput="updateThreshold(this.value)"
+                    >
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 items-center">
+                    <div class="chart-container" style="height:250px;">
+                        <canvas id="rocChart"></canvas>
+                    </div>
+                    <div class="chart-container" style="height:250px;">
+                        <canvas id="prChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-6 border border-border shadow-sm mt-8">
+                <h3 class="text-xl font-bold mb-4 text-center">Interactive Confusion Matrix</h3>
+
+                <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto text-center text-sm">
+                    <div onclick="selectCM('TP')" id="cm-TP" class="cm-box bg-accentA p-6 rounded cursor-pointer text-black font-bold">TP<br>85</div>
+                    <div onclick="selectCM('FP')" id="cm-FP" class="cm-box bg-accentB p-6 rounded cursor-pointer text-black font-bold">FP<br>15</div>
+                    <div onclick="selectCM('FN')" id="cm-FN" class="cm-box bg-accentC p-6 rounded cursor-pointer text-black font-bold">FN<br>10</div>
+                    <div onclick="selectCM('TN')" id="cm-TN" class="cm-box bg-green-400 p-6 rounded cursor-pointer text-black font-bold">TN<br>90</div>
+                </div>
+
+                <div id="cmExplanation" class="text-sm text-secondary text-center mt-4">
+                    Click a box to understand it.
+                </div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-6 border border-border shadow-sm mt-8">
+                <h3 class="text-xl font-bold mb-4 text-center">Training Simulation (Epoch vs Loss)</h3>
+
+                <div class="chart-container">
+                    <canvas id="lossChart"></canvas>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button onclick="simulateTraining()" 
+                        class="px-4 py-2 bg-accentA text-black rounded font-semibold">
+                        ▶ Start Training
+                    </button>
+                </div>
+            </div>
+
+            <!-- OVERFITTING vs UNDERFITTING SECTION -->
+            <div class="bg-surface rounded-xl p-6 border border-border shadow-sm mt-8">
+                <h3 class="text-xl font-bold mb-4 text-center">Overfitting vs Underfitting</h3>
+
+                <div class="chart-container">
+                    <canvas id="fitChart"></canvas>
+                </div>
+
+                <!-- EXPLANATION + HOVER -->
+                <div class="mt-6 text-sm text-secondary">
+                    <div class="grid md:grid-cols-3 gap-4">
+
+                        <!-- UNDERFITTING -->
+                        <div onmouseenter="highlightRegion('under')" 
+                             class="bg-slate-800 p-4 rounded border border-slate-600 cursor-pointer">
+                            <h4 class="text-accentA font-bold mb-2">Underfitting</h4>
+                            <p class="text-xs">
+                                Model is too simple. Both training and validation loss remain high → poor learning.
+                            </p>
+                        </div>
+
+                        <!-- GOOD FIT -->
+                        <div onmouseenter="highlightRegion('good')" 
+                             class="bg-slate-800 p-4 rounded border border-slate-600 cursor-pointer">
+                            <h4 class="text-green-400 font-bold mb-2">Good Fit</h4>
+                            <p class="text-xs">
+                                Training and validation loss decrease together → model generalizes well.
+                            </p>
+                        </div>
+
+                        <!-- OVERFITTING -->
+                        <div onmouseenter="highlightRegion('over')" 
+                             class="bg-slate-800 p-4 rounded border border-slate-600 cursor-pointer">
+                            <h4 class="text-accentC font-bold mb-2">Overfitting</h4>
+                            <p class="text-xs">
+                                Training loss decreases but validation loss increases → model memorizes data.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- KEY INSIGHT -->
+                    <div class="mt-4 bg-slate-800 p-4 rounded border border-accentA">
+                        <strong class="text-accentA">Key Insight:</strong>
+                        The gap between training and validation loss indicates generalization. 
+                        Larger gap = overfitting.
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <section id="tab-genai" class="tab-content max-w-5xl mx-auto">
@@ -724,6 +970,249 @@
                     }
                 }
             });
+        }
+        
+        // ROC CURVE
+        const ctxROC = document.getElementById('rocChart').getContext('2d');
+        chartInstances.roc = new Chart(ctxROC, {
+            type: 'line',
+            data: {
+                labels: [0, 0.1, 0.2, 0.4, 0.6, 0.8, 1],
+                datasets: [
+                    {
+                        label: 'ROC Curve',
+                        data: [0, 0.6, 0.75, 0.85, 0.92, 0.97, 1],
+                        borderColor: '#06B6D4',
+                        backgroundColor: 'rgba(6,182,212,0.1)',
+                        fill: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Random Classifier',
+                        data: [0, 0.1, 0.2, 0.4, 0.6, 0.8, 1],
+                        borderColor: '#64748B',
+                        borderDash: [5,5],
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: '#94A3B8' } },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => `TPR: ${ctx.raw}`
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: 'False Positive Rate', color: '#94A3B8' },
+                        grid: { color: '#334155' }
+                    },
+                    y: {
+                        title: { display: true, text: 'True Positive Rate (Recall)', color: '#94A3B8' },
+                        min: 0,
+                        max: 1,
+                        grid: { color: '#334155' }
+                    }
+                }
+            }
+        });
+
+        // PRECISION-RECALL CURVE
+        const ctxPR = document.getElementById('prChart').getContext('2d');
+        chartInstances.pr = new Chart(ctxPR, {
+            type: 'line',
+            data: {
+                labels: [0, 0.2, 0.4, 0.6, 0.8, 1],
+                datasets: [{
+                    label: 'Precision-Recall Curve',
+                    data: [1, 0.9, 0.85, 0.8, 0.7, 0.6],
+                    borderColor: '#EC4899',
+                    backgroundColor: 'rgba(236,72,153,0.1)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: '#94A3B8' } },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => `Precision: ${ctx.raw}`
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Recall', color: '#94A3B8' },
+                        grid: { color: '#334155' }
+                    },
+                    y: {
+                        title: { display: true, text: 'Precision', color: '#94A3B8' },
+                        min: 0,
+                        max: 1,
+                        grid: { color: '#334155' }
+                    }
+                }
+            }
+        });
+
+        function updateThreshold(val) {
+            document.getElementById('thresholdVal').innerText = parseFloat(val).toFixed(2);
+
+            const t = parseFloat(val);
+
+            // simulate curve change
+            chartInstances.roc.data.datasets[0].data = [
+                0,
+                0.4 + t*0.3,
+                0.6 + t*0.2,
+                0.75 + t*0.2,
+                0.85 + t*0.1,
+                0.95,
+                1
+            ];
+
+            chartInstances.pr.data.datasets[0].data = [
+                1,
+                0.95 - t*0.2,
+                0.9 - t*0.2,
+                0.8 - t*0.2,
+                0.7 - t*0.2,
+                0.6 - t*0.2
+            ];
+
+            chartInstances.roc.update();
+            chartInstances.pr.update();
+        }
+
+        // LOSS CHART
+        const ctxLoss = document.getElementById('lossChart').getContext('2d');
+        chartInstances.loss = new Chart(ctxLoss, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Loss',
+                    data: [],
+                    borderColor: '#06B6D4',
+                    fill: false,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: '#94A3B8' } }
+                },
+                scales: {
+                    x: { title: { display: true, text: 'Epoch', color: '#94A3B8' } },
+                    y: { title: { display: true, text: 'Loss', color: '#94A3B8' } }
+                }
+            }
+        });
+
+        // TRAINING SIMULATION
+        function simulateTraining() {
+            let epoch = 0;
+            let loss = 1.0;
+
+            const interval = setInterval(() => {
+                epoch++;
+                loss *= (0.9 + Math.random() * 0.05);
+
+                chartInstances.loss.data.labels.push(epoch);
+                chartInstances.loss.data.datasets[0].data.push(loss);
+
+                chartInstances.loss.update();
+
+                if (epoch >= 20) clearInterval(interval);
+            }, 300);
+        }
+
+        function selectCM(type) {
+            document.querySelectorAll('.cm-box').forEach(el => {
+                el.classList.remove('ring-4','ring-white');
+            });
+
+            document.getElementById('cm-' + type).classList.add('ring-4','ring-white');
+
+            const explanations = {
+                TP: "True Positive: Model correctly predicts disease.",
+                FP: "False Positive: Model predicts disease but it's actually normal.",
+                FN: "False Negative: Model misses disease (critical error).",
+                TN: "True Negative: Model correctly predicts normal case."
+            };
+
+            document.getElementById('cmExplanation').innerText = explanations[type];
+        }
+
+        // OVERFITTING GRAPH
+        const ctxFit = document.getElementById('fitChart').getContext('2d');
+        if (!window.chartInstances) window.chartInstances = {};
+
+        chartInstances.fit = new Chart(ctxFit, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: 20}, (_, i) => i+1),
+                datasets: [
+                    {
+                        label: 'Training Loss',
+                        data: Array.from({length: 20}, (_, i) => Math.exp(-i/5)),
+                        borderColor: '#06B6D4',
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Validation Loss',
+                        data: Array.from({length: 20}, (_, i) => 
+                            i < 10 ? Math.exp(-i/5) : Math.exp(-10/5) + (i-10)*0.03
+                        ),
+                        borderColor: '#EC4899',
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    legend: { labels: { color: '#94A3B8' } }
+                },
+                scales: {
+                    x: { title: { display: true, text: 'Epoch', color: '#94A3B8' } },
+                    y: { title: { display: true, text: 'Loss', color: '#94A3B8' } }
+                }
+            }
+        });
+
+        /* HOVER INTERACTION */
+        function highlightRegion(type) {
+            const chart = chartInstances.fit;
+
+            let region = {
+                under: {start: 0, end: 5, color: 'rgba(6,182,212,0.15)'},
+                good: {start: 5, end: 10, color: 'rgba(34,197,94,0.15)'},
+                over: {start: 10, end: 20, color: 'rgba(236,72,153,0.15)'}
+            };
+
+            const r = region[type];
+
+            chart.options.plugins.annotation = {
+                annotations: {
+                    box: {
+                        type: 'box',
+                        xMin: r.start,
+                        xMax: r.end,
+                        yMin: 0,
+                        yMax: 1.5,
+                        backgroundColor: r.color
+                    }
+                }
+            };
+
+            chart.update();
         }
     </script>
 </body>
