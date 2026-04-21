@@ -725,6 +725,37 @@
                 </div>
             </div>
 
+            <!-- LIVE AI DEMO: HUGGING FACE INTEGRATION -->
+            <div class="bg-surface rounded-xl p-6 border border-border shadow-sm mt-8">
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-2" style="color: #8B5CF6;">
+                    <span>🤗</span> Live AI Demo: Tuberculosis Detection (Hugging Face)
+                </h3>
+                <p class="text-sm text-secondary mb-4">
+                    <strong>Why did it refuse to connect previously?</strong> Hugging Face blocks standard URLs from being embedded. This smart connector converts standard links into the direct <code>.hf.space</code> format required for embedding.
+                </p>
+                
+                <div class="flex flex-col md:flex-row gap-2 mb-6">
+                    <input type="text" id="hf-url-input" class="flex-1 bg-slate-900 border border-slate-700 rounded px-4 py-2 text-sm text-primary focus:outline-none focus:border-accentB placeholder-slate-500" placeholder="Paste your Hugging Face Space URL here" value="https://huggingface.co/spaces/shubhlokhugging/TB-Chest-Xray-Classification">
+                    <button onclick="connectHuggingFace()" class="bg-accentB hover:bg-purple-500 text-white font-semibold py-2 px-6 rounded transition-colors text-sm whitespace-nowrap shadow-lg">
+                        Reconnect Space
+                    </button>
+                </div>
+
+                <div class="w-full h-[550px] bg-slate-900 rounded-xl border border-slate-700 overflow-hidden relative shadow-inner">
+                    <div id="hf-placeholder" class="absolute inset-0 flex flex-col items-center justify-center text-secondary">
+                        <div class="text-5xl mb-4 opacity-50">🔗</div>
+                        <p>Paste a Hugging Face URL above to load the live AI model.</p>
+                    </div>
+                    
+                    <div id="hf-loader" class="absolute inset-0 flex flex-col items-center justify-center text-secondary hidden bg-slate-900 z-10">
+                        <div class="w-12 h-12 border-4 border-accentB border-t-transparent rounded-full animate-spin mb-4"></div>
+                        <p class="animate-pulse">Connecting to Hugging Face API...</p>
+                    </div>
+                    
+                    <iframe id="hf-iframe" class="w-full h-full border-none hidden relative z-0" allow="camera; microphone; clipboard-write"></iframe>
+                </div>
+            </div>
+
         </section>
 
     </main>
@@ -732,6 +763,8 @@
     <script>
         const chartInstances = {};
         let chartsInitialized = false;
+        let cnn3DInitialized = false;
+        let hfConnected = false;
 
         const genAiDescriptions = {
             diffusion: `<strong class="text-accentB block mb-2 text-lg">Diffusion Models (e.g., Midjourney, DALL-E)</strong>Operate by progressively adding Gaussian noise to training data until it becomes random noise, and then training a neural network to reverse this process. By starting with random noise and iteratively "denoising" it based on text conditioning, they generate highly detailed, photorealistic images.`,
@@ -776,6 +809,17 @@
             if (!chartsInitialized && tabId !== 'overview') {
                 initAllCharts();
                 chartsInitialized = true;
+            }
+
+            if (tabId === 'cnn') {
+                // Initialize 3D scene after a tiny delay so display:block can render widths properly
+                setTimeout(initCNN3D, 50);
+            }
+
+            if (tabId === 'healthcare' && !hfConnected) {
+                // Auto-connect to hugging face space when the tab is opened
+                setTimeout(connectHuggingFace, 50);
+                hfConnected = true;
             }
         }
 
@@ -1214,6 +1258,53 @@
 
             chart.update();
         }
+
+        /* --- HUGGING FACE CONNECTOR LOGIC --- */
+        function connectHuggingFace() {
+            const inputUrl = document.getElementById('hf-url-input').value.trim();
+            const iframe = document.getElementById('hf-iframe');
+            const loader = document.getElementById('hf-loader');
+            const placeholder = document.getElementById('hf-placeholder');
+            
+            if (!inputUrl) {
+                alert("Please paste a Hugging Face Space URL first.");
+                return;
+            }
+
+            // UI State updates
+            placeholder.classList.add('hidden');
+            iframe.classList.add('hidden');
+            loader.classList.remove('hidden');
+
+            let embedUrl = inputUrl;
+
+            // Auto-convert standard Hugging Face URL to the embeddable format
+            // Example: https://huggingface.co/spaces/Gradio-Blocks/Tuberculosis-Detection
+            // Becomes: https://gradio-blocks-tuberculosis-detection.hf.space
+            if (inputUrl.includes('huggingface.co/spaces/')) {
+                try {
+                    const urlObj = new URL(inputUrl);
+                    const pathParts = urlObj.pathname.split('/').filter(p => p);
+                    
+                    if (pathParts[0] === 'spaces' && pathParts.length >= 3) {
+                        const user = pathParts[1].toLowerCase();
+                        const space = pathParts[2].toLowerCase();
+                        embedUrl = `https://${user}-${space}.hf.space`;
+                    }
+                } catch (e) {
+                    console.error("URL Parsing error", e);
+                }
+            }
+
+            iframe.src = embedUrl;
+
+            // Remove loader when iframe finishes loading
+            iframe.onload = () => {
+                loader.classList.add('hidden');
+                iframe.classList.remove('hidden');
+            };
+        }
+
     </script>
 </body>
 </html>
