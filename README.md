@@ -29,8 +29,11 @@ Interactive diagrams and charts showing ImageNet progression and CNN layers.
 Visualizations of current enterprise use case distributions and dominant architectures.
 ![Generative AI](screenshots/genai.png)
 
+### Healthcare AI
+Visualizations of current enterprise use case distributions and dominant architectures.
+![Healthcare AI](screenshots/Screenshot%202026-04-22%20002830.png)
+
 ## 🛠️ Tech Stack
 - **HTML5:** Semantic structure.
 - **Tailwind CSS:** Responsive, modern styling.
 - **Chart.js:** Interactive data visualizations.
-
