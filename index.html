@@ -1446,7 +1446,9 @@
                 var base64Image = await fileToBase64(xrayCurrentFile);
 
                 // Try Gradio 4+ queue-based API first (no separate upload step)
-                var sessionHash = Math.random().toString(36).substring(2, 12);
+                var sessionHash = (typeof crypto !== 'undefined' && crypto.randomUUID)
+                    ? crypto.randomUUID().replace(/-/g, '').substring(0, 10)
+                    : Math.random().toString(36).substring(2, 12);
                 var joinRes = await fetch(HF_SPACE + '/queue/join', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1474,7 +1476,7 @@
                                     evtSource.close();
                                     reject(new Error('AI service returned an error. Please try the Full Demo.'));
                                 }
-                            } catch (parseErr) { /* ignore non-JSON messages */ }
+                            } catch (parseErr) { console.debug('SSE parse:', parseErr); }
                         };
                         evtSource.onerror = function() {
                             clearTimeout(timeout);
