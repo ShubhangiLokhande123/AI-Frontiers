@@ -1421,6 +1421,15 @@
             document.getElementById('xray-file-input').value = '';
         }
 
+        function fileToBase64(file) {
+            return new Promise(function(resolve, reject) {
+                var reader = new FileReader();
+                reader.onload = function() { resolve(reader.result); };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
         async function analyzeXray() {
             if (!xrayCurrentFile) return;
 
@@ -1431,30 +1440,59 @@
             loading.classList.remove('hidden');
             loading.classList.add('flex', 'flex-col');
 
+            var HF_SPACE = 'https://shubhlokhugging-tb-chest-xray-classification.hf.space';
+
             try {
-                var formData = new FormData();
-                formData.append('files', xrayCurrentFile);
+                var base64Image = await fileToBase64(xrayCurrentFile);
 
-                var uploadRes = await fetch('https://shubhlokhugging-tb-chest-xray-classification.hf.space/upload', {
-                    method: 'POST',
-                    body: formData
-                });
-                if (!uploadRes.ok) throw new Error('Upload failed (HTTP ' + uploadRes.status + ')');
-                var uploadedFiles = await uploadRes.json();
-                if (!Array.isArray(uploadedFiles) || uploadedFiles.length === 0) {
-                    throw new Error('Invalid upload response: expected non-empty array of file paths');
-                }
-
-                // Gradio REST API: POST /run/predict with { data: [{ name: uploadedPath, is_file: true }] }
-                var predictRes = await fetch('https://shubhlokhugging-tb-chest-xray-classification.hf.space/run/predict', {
+                // Try Gradio 4+ queue-based API first (no separate upload step)
+                var sessionHash = Math.random().toString(36).substring(2, 12);
+                var joinRes = await fetch(HF_SPACE + '/queue/join', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ data: [{ name: uploadedFiles[0], is_file: true }] })
+                    body: JSON.stringify({ data: [base64Image], fn_index: 0, session_hash: sessionHash })
                 });
-                if (!predictRes.ok) throw new Error('Prediction failed (HTTP ' + predictRes.status + ')');
-                var result = await predictRes.json();
 
-                showXrayResult(result.data);
+                if (joinRes.ok) {
+                    // Gradio 4: listen for result via SSE
+                    await new Promise(function(resolve, reject) {
+                        var evtSource = new EventSource(HF_SPACE + '/queue/data?session_hash=' + sessionHash);
+                        var timeout = setTimeout(function() {
+                            evtSource.close();
+                            reject(new Error('Analysis timed out. The AI service may be starting up — please try again in a moment.'));
+                        }, 45000);
+                        evtSource.onmessage = function(e) {
+                            try {
+                                var msg = JSON.parse(e.data);
+                                if (msg.msg === 'process_completed') {
+                                    clearTimeout(timeout);
+                                    evtSource.close();
+                                    showXrayResult(msg.output && msg.output.data);
+                                    resolve();
+                                } else if (msg.msg === 'process_errored') {
+                                    clearTimeout(timeout);
+                                    evtSource.close();
+                                    reject(new Error('AI service returned an error. Please try the Full Demo.'));
+                                }
+                            } catch (parseErr) { /* ignore non-JSON messages */ }
+                        };
+                        evtSource.onerror = function() {
+                            clearTimeout(timeout);
+                            evtSource.close();
+                            reject(new Error('Connection to AI service lost. Please try the Full Demo.'));
+                        };
+                    });
+                } else {
+                    // Fallback: Gradio 3 /run/predict with base64 image
+                    var predictRes = await fetch(HF_SPACE + '/run/predict', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ data: [base64Image] })
+                    });
+                    if (!predictRes.ok) throw new Error('Prediction failed (HTTP ' + predictRes.status + ')');
+                    var result = await predictRes.json();
+                    showXrayResult(result.data);
+                }
             } catch (err) {
                 console.error('X-ray analysis error:', err);
                 loading.classList.add('hidden');
