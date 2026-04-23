@@ -741,33 +741,76 @@
 
                 <!-- Sample Images -->
                 <div class="mb-6">
-                    <p class="text-sm font-semibold text-primary mb-3">📂 Sample X-Ray Images — try these with the demo below:</p>
+                    <p class="text-sm font-semibold text-primary mb-3">📂 Sample X-Ray Images — drag one into the upload area below:</p>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div class="flex flex-col items-center gap-2">
-                            <img src="Data/Normal.jpg" alt="Normal Chest X-Ray" class="w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900">
+                            <img src="Data/Normal.jpg" alt="Normal Chest X-Ray" data-src="Data/Normal.jpg" draggable="true" class="xray-sample-img w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-grab hover:border-accentB transition-colors">
                             <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">✓ Normal</span>
                         </div>
                         <div class="flex flex-col items-center gap-2">
-                            <img src="Data/Normal.1.jpg" alt="Normal Chest X-Ray 2" class="w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900">
+                            <img src="Data/Normal.1.jpg" alt="Normal Chest X-Ray 2" data-src="Data/Normal.1.jpg" draggable="true" class="xray-sample-img w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-grab hover:border-accentB transition-colors">
                             <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">✓ Normal</span>
                         </div>
                         <div class="flex flex-col items-center gap-2">
-                            <img src="Data/TB.68.jpg" alt="TB Positive Chest X-Ray" class="w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900">
+                            <img src="Data/TB.68.jpg" alt="TB Positive Chest X-Ray" data-src="Data/TB.68.jpg" draggable="true" class="xray-sample-img w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-grab hover:border-accentB transition-colors">
                             <span class="text-xs font-semibold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full">⚠ TB Positive</span>
                         </div>
                         <div class="flex flex-col items-center gap-2">
-                            <img src="Data/TB.69.jpg" alt="TB Positive Chest X-Ray 2" class="w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900">
+                            <img src="Data/TB.69.jpg" alt="TB Positive Chest X-Ray 2" data-src="Data/TB.69.jpg" draggable="true" class="xray-sample-img w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-grab hover:border-accentB transition-colors">
                             <span class="text-xs font-semibold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full">⚠ TB Positive</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="w-full h-[600px] bg-slate-900 rounded-xl border border-slate-700 overflow-hidden relative shadow-inner">
-                    <div id="hf-loader" class="absolute inset-0 flex flex-col items-center justify-center text-secondary bg-slate-900 z-10">
-                        <div class="w-12 h-12 border-4 border-accentB border-t-transparent rounded-full animate-spin mb-4"></div>
-                        <p class="animate-pulse">Loading TB Detection Model...</p>
+                <div class="w-full bg-slate-900 rounded-xl border border-slate-700 overflow-hidden shadow-inner">
+                    <div class="flex items-center justify-between px-4 py-3 border-b border-slate-700">
+                        <span class="text-sm font-semibold text-secondary">🔬 Upload Chest X-Ray for Analysis</span>
+                        <a href="https://shubhlokhugging-tb-chest-xray-classification.hf.space" target="_blank" rel="noopener" class="text-xs text-accentA hover:underline">Open Full Demo ↗</a>
                     </div>
-                    <iframe id="hf-iframe" class="w-full h-full border-none hidden relative z-0" allow="camera; microphone; clipboard-write"></iframe>
+                    <!-- Drop Zone -->
+                    <div id="xray-dropzone" class="flex flex-col items-center justify-center m-4 p-8 border-2 border-dashed border-slate-600 rounded-xl transition-colors cursor-pointer min-h-[260px]">
+                        <!-- Default hint -->
+                        <div id="xray-drop-hint" class="flex flex-col items-center gap-3 text-center pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            <p class="text-primary font-semibold">Drag a sample image here</p>
+                            <p class="text-secondary text-xs">or drop an X-ray file from your computer</p>
+                            <label class="pointer-events-auto cursor-pointer mt-2">
+                                <input type="file" id="xray-file-input" accept="image/*" class="hidden">
+                                <span class="px-4 py-2 bg-accentB/20 text-accentB border border-accentB rounded-lg text-sm hover:bg-accentB/30 transition-colors">Browse Files</span>
+                            </label>
+                        </div>
+                        <!-- Preview state -->
+                        <div id="xray-preview-state" class="hidden items-center gap-4 w-full">
+                            <img id="xray-preview-img" class="max-h-56 rounded-lg object-contain border border-slate-700" alt="X-Ray Preview">
+                            <p id="xray-preview-name" class="text-secondary text-xs truncate max-w-full"></p>
+                            <div class="flex gap-3">
+                                <button id="xray-analyze-btn" class="px-6 py-2 bg-accentB text-white rounded-lg text-sm font-semibold hover:bg-purple-600 transition-colors">🔬 Analyze with AI</button>
+                                <button id="xray-clear-btn" class="px-4 py-2 bg-slate-700 text-secondary rounded-lg text-sm hover:bg-slate-600 transition-colors">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Loading -->
+                    <div id="xray-loading" class="hidden items-center gap-3 py-8">
+                        <div class="w-10 h-10 border-4 border-accentB border-t-transparent rounded-full animate-spin"></div>
+                        <p class="text-secondary text-sm animate-pulse">Analyzing X-ray with AI...</p>
+                    </div>
+                    <!-- Results -->
+                    <div id="xray-results" class="hidden px-4 pb-6">
+                        <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="font-bold text-primary">AI Analysis Result</h4>
+                                <button id="xray-try-another-btn" class="text-xs text-accentA hover:underline">Try another →</button>
+                            </div>
+                            <div id="xray-result-label" class="text-2xl font-bold mb-1"></div>
+                            <div id="xray-result-confidence" class="text-secondary text-sm mb-3"></div>
+                            <div id="xray-result-bar-wrap" class="w-full bg-slate-700 rounded-full h-2 mb-4">
+                                <div id="xray-result-bar-fill" class="h-2 rounded-full transition-all duration-700" style="width:0%"></div>
+                            </div>
+                            <p class="text-xs text-secondary">For Grad-CAM saliency map and downloadable report, use the <a href="https://shubhlokhugging-tb-chest-xray-classification.hf.space" target="_blank" rel="noopener" class="text-accentA hover:underline">Full Demo ↗</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -832,8 +875,8 @@
             }
 
             if (tabId === 'healthcare' && !hfConnected) {
-                // Auto-connect to hugging face space when the tab is opened
-                setTimeout(connectHuggingFace, 50);
+                // Initialize the X-ray uploader when the healthcare tab is opened
+                setTimeout(initXrayUploader, 50);
                 hfConnected = true;
             }
         }
@@ -1274,22 +1317,203 @@
             chart.update();
         }
 
-        /* --- HUGGING FACE CONNECTOR LOGIC --- */
-        function connectHuggingFace() {
-            const iframe = document.getElementById('hf-iframe');
-            const loader = document.getElementById('hf-loader');
+        /* --- X-RAY UPLOAD ZONE LOGIC --- */
+        var xrayCurrentFile = null;
+        var xrayDragCount = 0;
 
-            loader.classList.remove('hidden');
-            iframe.classList.add('hidden');
+        function initXrayUploader() {
+            document.querySelectorAll('.xray-sample-img').forEach(function(img) {
+                img.addEventListener('dragstart', function(e) {
+                    e.dataTransfer.setData('text/x-sample-xray', img.dataset.src);
+                    e.dataTransfer.effectAllowed = 'copy';
+                });
+            });
 
-            // TB Chest X-Ray Classification Space
-            iframe.src = 'https://shubhlokhugging-tb-chest-xray-classification.hf.space';
+            var dropzone = document.getElementById('xray-dropzone');
+            dropzone.addEventListener('dragover', function(e) { e.preventDefault(); });
+            dropzone.addEventListener('dragenter', function(e) {
+                e.preventDefault();
+                xrayDragCount++;
+                dropzone.classList.add('border-accentB', 'bg-slate-800');
+            });
+            dropzone.addEventListener('dragleave', function() {
+                xrayDragCount--;
+                if (xrayDragCount === 0) {
+                    dropzone.classList.remove('border-accentB', 'bg-slate-800');
+                }
+            });
+            dropzone.addEventListener('drop', function(e) {
+                xrayDragCount = 0;
+                dropzone.classList.remove('border-accentB', 'bg-slate-800');
+                handleXrayDrop(e);
+            });
 
-            // Hide loader when iframe finishes loading
-            iframe.onload = () => {
-                loader.classList.add('hidden');
-                iframe.classList.remove('hidden');
+            document.getElementById('xray-file-input').addEventListener('change', function() {
+                handleXrayFile(this.files[0]);
+            });
+            document.getElementById('xray-analyze-btn').addEventListener('click', analyzeXray);
+            document.getElementById('xray-clear-btn').addEventListener('click', resetXrayUploader);
+            document.getElementById('xray-try-another-btn').addEventListener('click', resetXrayUploader);
+        }
+
+        function handleXrayDrop(e) {
+            e.preventDefault();
+
+            var sampleSrc = e.dataTransfer.getData('text/x-sample-xray');
+            if (sampleSrc) {
+                loadXrayFromUrl(sampleSrc);
+                return;
+            }
+
+            var files = e.dataTransfer.files;
+            if (files && files.length > 0 && files[0].type.startsWith('image/')) {
+                setXrayFile(files[0]);
+            }
+        }
+
+        function handleXrayFile(file) {
+            if (file && file.type.startsWith('image/')) {
+                setXrayFile(file);
+            }
+        }
+
+        function setXrayFile(file) {
+            xrayCurrentFile = file;
+            var reader = new FileReader();
+            reader.onload = function(ev) {
+                document.getElementById('xray-preview-img').src = ev.target.result;
+                document.getElementById('xray-preview-name').textContent = file.name;
+                showXrayPreview();
             };
+            reader.readAsDataURL(file);
+        }
+
+        async function loadXrayFromUrl(url) {
+            try {
+                var res = await fetch(url);
+                var blob = await res.blob();
+                var fileName = url.split('/').pop();
+                var file = new File([blob], fileName, { type: blob.type || 'image/jpeg' });
+                setXrayFile(file);
+            } catch (err) {
+                console.error('Failed to load sample image:', err);
+            }
+        }
+
+        function showXrayPreview() {
+            document.getElementById('xray-drop-hint').classList.add('hidden');
+            var ps = document.getElementById('xray-preview-state');
+            ps.classList.remove('hidden');
+            ps.classList.add('flex', 'flex-col');
+            document.getElementById('xray-results').classList.add('hidden');
+        }
+
+        function resetXrayUploader() {
+            xrayCurrentFile = null;
+            document.getElementById('xray-drop-hint').classList.remove('hidden');
+            var ps = document.getElementById('xray-preview-state');
+            ps.classList.add('hidden');
+            ps.classList.remove('flex', 'flex-col');
+            document.getElementById('xray-results').classList.add('hidden');
+            var loading = document.getElementById('xray-loading');
+            loading.classList.add('hidden');
+            loading.classList.remove('flex', 'flex-col');
+            document.getElementById('xray-file-input').value = '';
+        }
+
+        async function analyzeXray() {
+            if (!xrayCurrentFile) return;
+
+            var ps = document.getElementById('xray-preview-state');
+            ps.classList.add('hidden');
+            ps.classList.remove('flex', 'flex-col');
+            var loading = document.getElementById('xray-loading');
+            loading.classList.remove('hidden');
+            loading.classList.add('flex', 'flex-col');
+
+            try {
+                var formData = new FormData();
+                formData.append('files', xrayCurrentFile);
+
+                var uploadRes = await fetch('https://shubhlokhugging-tb-chest-xray-classification.hf.space/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                if (!uploadRes.ok) throw new Error('Upload failed (HTTP ' + uploadRes.status + ')');
+                var uploadedFiles = await uploadRes.json();
+                if (!Array.isArray(uploadedFiles) || uploadedFiles.length === 0) {
+                    throw new Error('Invalid upload response: expected non-empty array of file paths');
+                }
+
+                // Gradio REST API: POST /run/predict with { data: [{ name: uploadedPath, is_file: true }] }
+                var predictRes = await fetch('https://shubhlokhugging-tb-chest-xray-classification.hf.space/run/predict', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ data: [{ name: uploadedFiles[0], is_file: true }] })
+                });
+                if (!predictRes.ok) throw new Error('Prediction failed (HTTP ' + predictRes.status + ')');
+                var result = await predictRes.json();
+
+                showXrayResult(result.data);
+            } catch (err) {
+                console.error('X-ray analysis error:', err);
+                loading.classList.add('hidden');
+                loading.classList.remove('flex', 'flex-col');
+                showXrayPreview();
+                var errNote = document.getElementById('xray-api-error');
+                if (!errNote) {
+                    errNote = document.createElement('p');
+                    errNote.id = 'xray-api-error';
+                    errNote.className = 'text-xs text-red-400 mt-2 text-center';
+                    document.getElementById('xray-preview-state').appendChild(errNote);
+                }
+                errNote.textContent = 'Analysis failed (' + err.message + '). Please try the Full Demo.';
+            }
+        }
+
+        function showXrayResult(data) {
+            var loading = document.getElementById('xray-loading');
+            loading.classList.add('hidden');
+            loading.classList.remove('flex', 'flex-col');
+
+            var label = 'Unknown';
+            var confidence = null;
+
+            if (Array.isArray(data) && data.length > 0) {
+                if (typeof data[0] === 'string') {
+                    label = data[0];
+                    confidence = typeof data[1] === 'number' ? data[1] : null;
+                } else if (data[0] && typeof data[0] === 'object' && data[0].label) {
+                    label = data[0].label;
+                    var confs = data[0].confidences;
+                    if (Array.isArray(confs)) {
+                        var top = confs.find(function(c) { return c.label === label; });
+                        confidence = top ? top.confidence : null;
+                    }
+                }
+            }
+
+            var isNormal = label.toLowerCase().includes('normal');
+            var colorClass = isNormal ? 'text-green-400' : 'text-red-400';
+            var barColor = isNormal ? 'bg-green-500' : 'bg-red-500';
+            var icon = isNormal ? '✅' : '⚠️';
+
+            var labelEl = document.getElementById('xray-result-label');
+            labelEl.className = 'text-2xl font-bold mb-1 ' + colorClass;
+            labelEl.textContent = icon + ' ' + label;
+
+            if (confidence !== null) {
+                var pct = Math.round(confidence * 100);
+                document.getElementById('xray-result-confidence').textContent = 'Confidence: ' + pct + '%';
+                var barFill = document.getElementById('xray-result-bar-fill');
+                barFill.style.width = pct + '%';
+                barFill.className = 'h-2 rounded-full transition-all duration-700 ' + barColor;
+                document.getElementById('xray-result-bar-wrap').classList.remove('hidden');
+            } else {
+                document.getElementById('xray-result-bar-wrap').classList.add('hidden');
+            }
+
+            document.getElementById('xray-results').classList.remove('hidden');
         }
 
     </script>
