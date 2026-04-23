@@ -768,10 +768,7 @@
                         <a href="https://shubhlokhugging-tb-chest-xray-classification.hf.space" target="_blank" rel="noopener" class="text-xs text-accentA hover:underline">Open Full Demo ↗</a>
                     </div>
                     <!-- Drop Zone -->
-                    <div id="xray-dropzone" class="flex flex-col items-center justify-center m-4 p-8 border-2 border-dashed border-slate-600 rounded-xl transition-colors cursor-pointer min-h-[260px]"
-                         ondragover="event.preventDefault(); this.classList.add('border-accentB','bg-slate-800');"
-                         ondragleave="this.classList.remove('border-accentB','bg-slate-800');"
-                         ondrop="handleXrayDrop(event);">
+                    <div id="xray-dropzone" class="flex flex-col items-center justify-center m-4 p-8 border-2 border-dashed border-slate-600 rounded-xl transition-colors cursor-pointer min-h-[260px]">
                         <!-- Default hint -->
                         <div id="xray-drop-hint" class="flex flex-col items-center gap-3 text-center pointer-events-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -785,7 +782,7 @@
                             </label>
                         </div>
                         <!-- Preview state -->
-                        <div id="xray-preview-state" class="hidden flex-col items-center gap-4 w-full">
+                        <div id="xray-preview-state" class="hidden items-center gap-4 w-full">
                             <img id="xray-preview-img" class="max-h-56 rounded-lg object-contain border border-slate-700" alt="X-Ray Preview">
                             <p id="xray-preview-name" class="text-secondary text-xs truncate max-w-full"></p>
                             <div class="flex gap-3">
@@ -795,7 +792,7 @@
                         </div>
                     </div>
                     <!-- Loading -->
-                    <div id="xray-loading" class="hidden flex-col items-center gap-3 py-8">
+                    <div id="xray-loading" class="hidden items-center gap-3 py-8">
                         <div class="w-10 h-10 border-4 border-accentB border-t-transparent rounded-full animate-spin"></div>
                         <p class="text-secondary text-sm animate-pulse">Analyzing X-ray with AI...</p>
                     </div>
@@ -1322,6 +1319,7 @@
 
         /* --- X-RAY UPLOAD ZONE LOGIC --- */
         var xrayCurrentFile = null;
+        var xrayDragCount = 0;
 
         function initXrayUploader() {
             document.querySelectorAll('.xray-sample-img').forEach(function(img) {
@@ -1330,12 +1328,29 @@
                     e.dataTransfer.effectAllowed = 'copy';
                 });
             });
+
+            var dropzone = document.getElementById('xray-dropzone');
+            dropzone.addEventListener('dragover', function(e) { e.preventDefault(); });
+            dropzone.addEventListener('dragenter', function(e) {
+                e.preventDefault();
+                xrayDragCount++;
+                dropzone.classList.add('border-accentB', 'bg-slate-800');
+            });
+            dropzone.addEventListener('dragleave', function() {
+                xrayDragCount--;
+                if (xrayDragCount === 0) {
+                    dropzone.classList.remove('border-accentB', 'bg-slate-800');
+                }
+            });
+            dropzone.addEventListener('drop', function(e) {
+                xrayDragCount = 0;
+                dropzone.classList.remove('border-accentB', 'bg-slate-800');
+                handleXrayDrop(e);
+            });
         }
 
         function handleXrayDrop(e) {
             e.preventDefault();
-            var dropzone = document.getElementById('xray-dropzone');
-            dropzone.classList.remove('border-accentB', 'bg-slate-800');
 
             var sampleSrc = e.dataTransfer.getData('text/x-sample-xray');
             if (sampleSrc) {
@@ -1382,11 +1397,11 @@
             document.getElementById('xray-drop-hint').classList.add('hidden');
             var ps = document.getElementById('xray-preview-state');
             ps.classList.remove('hidden');
-            ps.classList.add('flex');
+            ps.classList.add('flex', 'flex-col');
             document.getElementById('xray-results').classList.add('hidden');
             var loading = document.getElementById('xray-loading');
             loading.classList.add('hidden');
-            loading.classList.remove('flex');
+            loading.classList.remove('flex', 'flex-col');
         }
 
         function resetXrayUploader() {
@@ -1394,11 +1409,11 @@
             document.getElementById('xray-drop-hint').classList.remove('hidden');
             var ps = document.getElementById('xray-preview-state');
             ps.classList.add('hidden');
-            ps.classList.remove('flex');
+            ps.classList.remove('flex', 'flex-col');
             document.getElementById('xray-results').classList.add('hidden');
             var loading = document.getElementById('xray-loading');
             loading.classList.add('hidden');
-            loading.classList.remove('flex');
+            loading.classList.remove('flex', 'flex-col');
             document.getElementById('xray-file-input').value = '';
         }
 
@@ -1407,10 +1422,10 @@
 
             var ps = document.getElementById('xray-preview-state');
             ps.classList.add('hidden');
-            ps.classList.remove('flex');
+            ps.classList.remove('flex', 'flex-col');
             var loading = document.getElementById('xray-loading');
             loading.classList.remove('hidden');
-            loading.classList.add('flex');
+            loading.classList.add('flex', 'flex-col');
 
             try {
                 var formData = new FormData();
@@ -1420,22 +1435,25 @@
                     method: 'POST',
                     body: formData
                 });
-                if (!uploadRes.ok) throw new Error('Upload failed: ' + uploadRes.status);
+                if (!uploadRes.ok) throw new Error('Upload failed (HTTP ' + uploadRes.status + ')');
                 var uploadedFiles = await uploadRes.json();
+                if (!Array.isArray(uploadedFiles) || uploadedFiles.length === 0) {
+                    throw new Error('Upload response contained no file paths');
+                }
 
                 var predictRes = await fetch('https://shubhlokhugging-tb-chest-xray-classification.hf.space/run/predict', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ data: [{ name: uploadedFiles[0], is_file: true }] })
                 });
-                if (!predictRes.ok) throw new Error('Prediction failed: ' + predictRes.status);
+                if (!predictRes.ok) throw new Error('Prediction failed (HTTP ' + predictRes.status + ')');
                 var result = await predictRes.json();
 
                 showXrayResult(result.data);
             } catch (err) {
                 console.error('X-ray analysis error:', err);
                 loading.classList.add('hidden');
-                loading.classList.remove('flex');
+                loading.classList.remove('flex', 'flex-col');
                 showXrayPreview();
                 var errNote = document.getElementById('xray-api-error');
                 if (!errNote) {
@@ -1444,16 +1462,16 @@
                     errNote.className = 'text-xs text-red-400 mt-2 text-center';
                     document.getElementById('xray-preview-state').appendChild(errNote);
                 }
-                errNote.textContent = 'Analysis failed. Please use the Full Demo link above.';
+                errNote.textContent = 'Analysis failed (' + err.message + '). Please use the Full Demo link above.';
             }
         }
 
         function showXrayResult(data) {
             var loading = document.getElementById('xray-loading');
             loading.classList.add('hidden');
-            loading.classList.remove('flex');
+            loading.classList.remove('flex', 'flex-col');
 
-            var label = null;
+            var label = 'Unknown';
             var confidence = null;
 
             if (Array.isArray(data) && data.length > 0) {
@@ -1469,14 +1487,15 @@
                     }
                 }
             }
-            if (!label) label = String(data);
 
             var isNormal = label.toLowerCase().includes('normal');
             var colorClass = isNormal ? 'text-green-400' : 'text-red-400';
             var barColor = isNormal ? 'bg-green-500' : 'bg-red-500';
             var icon = isNormal ? '✅' : '⚠️';
 
-            document.getElementById('xray-result-label').innerHTML = '<span class="' + colorClass + '">' + icon + ' ' + label + '</span>';
+            var labelEl = document.getElementById('xray-result-label');
+            labelEl.className = 'text-2xl font-bold mb-1 ' + colorClass;
+            labelEl.textContent = icon + ' ' + label;
 
             if (confidence !== null) {
                 var pct = Math.round(confidence * 100);
