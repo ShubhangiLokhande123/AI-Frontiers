@@ -728,30 +728,45 @@
             <!-- LIVE AI DEMO: HUGGING FACE INTEGRATION -->
             <div class="bg-surface rounded-xl p-6 border border-border shadow-sm mt-8">
                 <h3 class="text-xl font-bold mb-3 flex items-center gap-2" style="color: #8B5CF6;">
-                    <span>🤗</span> Live AI Demo: Tuberculosis Detection (Hugging Face)
+                    <span>🫁</span> Live AI Demo: Tuberculosis Detection
                 </h3>
-                <p class="text-sm text-secondary mb-4">
-                    <strong>Why did it refuse to connect previously?</strong> Hugging Face blocks standard URLs from being embedded. This smart connector converts standard links into the direct <code>.hf.space</code> format required for embedding.
+                <p class="text-sm text-secondary mb-2">
+                    This live demo runs an <strong class="text-primary">EfficientNet-B0</strong> model trained on chest X-ray images to classify scans as <span class="text-green-400 font-semibold">Normal</span> or <span class="text-red-400 font-semibold">TB-Positive</span>. It also generates a <strong class="text-primary">Grad-CAM saliency heatmap</strong> to highlight the lung regions that influenced the prediction, improving clinical explainability.
                 </p>
-                
-                <div class="flex flex-col md:flex-row gap-2 mb-6">
-                    <input type="text" id="hf-url-input" class="flex-1 bg-slate-900 border border-slate-700 rounded px-4 py-2 text-sm text-primary focus:outline-none focus:border-accentB placeholder-slate-500" placeholder="Paste your Hugging Face Space URL here" value="https://huggingface.co/spaces/shubhlokhugging/TB-Chest-Xray-Classification">
-                    <button onclick="connectHuggingFace()" class="bg-accentB hover:bg-purple-500 text-white font-semibold py-2 px-6 rounded transition-colors text-sm whitespace-nowrap shadow-lg">
-                        Reconnect Space
-                    </button>
+                <ul class="text-sm text-secondary list-disc list-inside mb-5 space-y-1">
+                    <li>Upload a posterior-anterior (PA) chest X-ray to get an instant AI-powered classification.</li>
+                    <li>Grad-CAM highlights the regions of the lung driving the model's decision.</li>
+                    <li>A downloadable diagnostic DOCX report is generated for each scan.</li>
+                </ul>
+
+                <!-- Sample Images -->
+                <div class="mb-6">
+                    <p class="text-sm font-semibold text-primary mb-3">📂 Sample X-Ray Images — try these with the demo below:</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="Data/Normal.jpg" alt="Normal Chest X-Ray" class="w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900">
+                            <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">✓ Normal</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="Data/Normal.1.jpg" alt="Normal Chest X-Ray 2" class="w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900">
+                            <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">✓ Normal</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="Data/TB.68.jpg" alt="TB Positive Chest X-Ray" class="w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900">
+                            <span class="text-xs font-semibold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full">⚠ TB Positive</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="Data/TB.69.jpg" alt="TB Positive Chest X-Ray 2" class="w-full rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900">
+                            <span class="text-xs font-semibold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full">⚠ TB Positive</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="w-full h-[550px] bg-slate-900 rounded-xl border border-slate-700 overflow-hidden relative shadow-inner">
-                    <div id="hf-placeholder" class="absolute inset-0 flex flex-col items-center justify-center text-secondary">
-                        <div class="text-5xl mb-4 opacity-50">🔗</div>
-                        <p>Paste a Hugging Face URL above to load the live AI model.</p>
-                    </div>
-                    
-                    <div id="hf-loader" class="absolute inset-0 flex flex-col items-center justify-center text-secondary hidden bg-slate-900 z-10">
+                <div class="w-full h-[600px] bg-slate-900 rounded-xl border border-slate-700 overflow-hidden relative shadow-inner">
+                    <div id="hf-loader" class="absolute inset-0 flex flex-col items-center justify-center text-secondary bg-slate-900 z-10">
                         <div class="w-12 h-12 border-4 border-accentB border-t-transparent rounded-full animate-spin mb-4"></div>
-                        <p class="animate-pulse">Connecting to Hugging Face API...</p>
+                        <p class="animate-pulse">Loading TB Detection Model...</p>
                     </div>
-                    
                     <iframe id="hf-iframe" class="w-full h-full border-none hidden relative z-0" allow="camera; microphone; clipboard-write"></iframe>
                 </div>
             </div>
@@ -1261,44 +1276,16 @@
 
         /* --- HUGGING FACE CONNECTOR LOGIC --- */
         function connectHuggingFace() {
-            const inputUrl = document.getElementById('hf-url-input').value.trim();
             const iframe = document.getElementById('hf-iframe');
             const loader = document.getElementById('hf-loader');
-            const placeholder = document.getElementById('hf-placeholder');
-            
-            if (!inputUrl) {
-                alert("Please paste a Hugging Face Space URL first.");
-                return;
-            }
 
-            // UI State updates
-            placeholder.classList.add('hidden');
-            iframe.classList.add('hidden');
             loader.classList.remove('hidden');
+            iframe.classList.add('hidden');
 
-            let embedUrl = inputUrl;
+            // TB Chest X-Ray Classification Space
+            iframe.src = 'https://shubhlokhugging-tb-chest-xray-classification.hf.space';
 
-            // Auto-convert standard Hugging Face URL to the embeddable format
-            // Example: https://huggingface.co/spaces/Gradio-Blocks/Tuberculosis-Detection
-            // Becomes: https://gradio-blocks-tuberculosis-detection.hf.space
-            if (inputUrl.includes('huggingface.co/spaces/')) {
-                try {
-                    const urlObj = new URL(inputUrl);
-                    const pathParts = urlObj.pathname.split('/').filter(p => p);
-                    
-                    if (pathParts[0] === 'spaces' && pathParts.length >= 3) {
-                        const user = pathParts[1].toLowerCase();
-                        const space = pathParts[2].toLowerCase();
-                        embedUrl = `https://${user}-${space}.hf.space`;
-                    }
-                } catch (e) {
-                    console.error("URL Parsing error", e);
-                }
-            }
-
-            iframe.src = embedUrl;
-
-            // Remove loader when iframe finishes loading
+            // Hide loader when iframe finishes loading
             iframe.onload = () => {
                 loader.classList.add('hidden');
                 iframe.classList.remove('hidden');
