@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -203,7 +203,7 @@
         </div>
 
         <div class="mt-auto hidden md:block pt-8 text-xs text-secondary border-t border-border mt-8">
-            <p>Data synthesized for educational exploration. Shubhangi Lokhande created with 💗</p>
+            <p>Data synthesized for educational exploration. Shubhangi Lokhande created with ðŸ’—</p>
         </div>
     </nav>
 
@@ -306,7 +306,7 @@
                                 <strong>Cross-Entropy Loss:</strong>
                                 <div class="text-xs text-secondary mt-1">Measures difference between predicted probability and true label.</div>
                                 <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentA">
-                                    L = - Σ y log(p)
+                                    L = - Î£ y log(p)
                                 </div>
                             </li>
 
@@ -314,7 +314,7 @@
                                 <strong>Focal Loss:</strong>
                                 <div class="text-xs text-secondary mt-1">Focuses more on hard examples, reduces impact of easy ones.</div>
                                 <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentB">
-                                    FL = (1 − p)^γ log(p)
+                                    FL = (1 âˆ’ p)^Î³ log(p)
                                 </div>
                             </li>
 
@@ -322,7 +322,7 @@
                                 <strong>Dice Loss:</strong>
                                 <div class="text-xs text-secondary mt-1">Maximizes overlap between predicted and true regions.</div>
                                 <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentC">
-                                    Dice = 2|X∩Y| / (|X| + |Y|)
+                                    Dice = 2|Xâˆ©Y| / (|X| + |Y|)
                                 </div>
                             </li>
 
@@ -407,12 +407,12 @@
                                 <div class="bg-gradient-to-r from-accentB to-accentC h-2 rounded" style="width: 90%"></div>
                             </div>
                             <span class="text-secondary block mt-1">
-                                Evaluates model’s ability to distinguish between classes across all thresholds (higher is better).
+                                Evaluates modelâ€™s ability to distinguish between classes across all thresholds (higher is better).
                             </span>
 
                             <!-- MINI VISUAL -->
                             <div class="mt-2 bg-slate-800 p-2 rounded text-[10px] text-secondary">
-                                TPR (Recall) ↑ vs FPR → &nbsp; | &nbsp; AUC ≈ 0.90 → Strong classifier
+                                TPR (Recall) â†‘ vs FPR â†’ &nbsp; | &nbsp; AUC â‰ˆ 0.90 â†’ Strong classifier
                             </div>
                         </div>
                     </div>
@@ -493,7 +493,7 @@
                 <div class="text-center mt-4">
                     <button onclick="simulateTraining()" 
                         class="px-4 py-2 bg-accentA text-black rounded font-semibold">
-                        ▶ Start Training
+                        â–¶ Start Training
                     </button>
                 </div>
             </div>
@@ -515,7 +515,7 @@
                              class="bg-slate-800 p-4 rounded border border-slate-600 cursor-pointer">
                             <h4 class="text-accentA font-bold mb-2">Underfitting</h4>
                             <p class="text-xs">
-                                Model is too simple. Both training and validation loss remain high → poor learning.
+                                Model is too simple. Both training and validation loss remain high â†’ poor learning.
                             </p>
                         </div>
 
@@ -524,7 +524,7 @@
                              class="bg-slate-800 p-4 rounded border border-slate-600 cursor-pointer">
                             <h4 class="text-green-400 font-bold mb-2">Good Fit</h4>
                             <p class="text-xs">
-                                Training and validation loss decrease together → model generalizes well.
+                                Training and validation loss decrease together â†’ model generalizes well.
                             </p>
                         </div>
 
@@ -533,7 +533,7 @@
                              class="bg-slate-800 p-4 rounded border border-slate-600 cursor-pointer">
                             <h4 class="text-accentC font-bold mb-2">Overfitting</h4>
                             <p class="text-xs">
-                                Training loss decreases but validation loss increases → model memorizes data.
+                                Training loss decreases but validation loss increases â†’ model memorizes data.
                             </p>
                         </div>
 
@@ -583,7 +583,7 @@
             <!-- Infographic Journey Stepper -->
             <div class="bg-surface rounded-xl border border-border shadow-sm p-8 mb-8">
                 <h3 class="text-xl font-bold text-center mb-1">Generative AI: A Visual Journey</h3>
-                <p class="text-sm text-secondary text-center mb-8">Step through key concepts — one infographic at a time</p>
+                <p class="text-sm text-secondary text-center mb-8">Step through key concepts â€” one infographic at a time</p>
 
                 <!-- Step Indicators -->
                 <div class="flex items-start justify-center mb-8">
@@ -611,7 +611,7 @@
                             <div>
                                 <span class="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">Step 1 of 3</span>
                                 <h4 class="text-xl font-bold mb-3" style="color:#8B5CF6">The Probabilistic Shift</h4>
-                                <p class="text-sm text-secondary leading-relaxed">Traditional AI defines hard decision boundaries — it answers <em>"which class does this belong to?"</em> Generative AI instead learns the full probability landscape of the training data, enabling it to sample entirely new, valid examples from that distribution. This pivot was made commercially viable by self-supervised pre-training on internet-scale corpora, eliminating the need for expensive human-labelled datasets at scale.</p>
+                                <p class="text-sm text-secondary leading-relaxed">Traditional AI defines hard decision boundaries â€” it answers <em>"which class does this belong to?"</em> Generative AI instead learns the full probability landscape of the training data, enabling it to sample entirely new, valid examples from that distribution. This pivot was made commercially viable by self-supervised pre-training on internet-scale corpora, eliminating the need for expensive human-labelled datasets at scale.</p>
                             </div>
                         </div>
                     </div>
@@ -622,7 +622,7 @@
                             <div>
                                 <span class="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">Step 2 of 3</span>
                                 <h4 class="text-xl font-bold mb-3" style="color:#06B6D4">Emergent Zero-Shot Capability</h4>
-                                <p class="text-sm text-secondary leading-relaxed">Foundation models develop surprising capabilities that were never explicitly trained — a phenomenon called <em>emergence</em>. At sufficient scale, a model trained purely to predict the next token becomes a reasoner, coder, and translator. Zero-shot transfer means one model serves countless downstream tasks through natural language prompts alone, fundamentally reshaping the economics of AI deployment.</p>
+                                <p class="text-sm text-secondary leading-relaxed">Foundation models develop surprising capabilities that were never explicitly trained â€” a phenomenon called <em>emergence</em>. At sufficient scale, a model trained purely to predict the next token becomes a reasoner, coder, and translator. Zero-shot transfer means one model serves countless downstream tasks through natural language prompts alone, fundamentally reshaping the economics of AI deployment.</p>
                             </div>
                         </div>
                     </div>
@@ -633,7 +633,7 @@
                             <div>
                                 <span class="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">Step 3 of 3</span>
                                 <h4 class="text-xl font-bold mb-3" style="color:#EC4899">Measured Real-World Impact</h4>
-                                <p class="text-sm text-secondary leading-relaxed">Adoption metrics reveal compounding returns: AI-assisted development teams report 30–55% faster delivery cycles, while generative tools in drug discovery compress early-stage molecule screening from years to weeks. Strategic depth of integration — not mere adoption — is the decisive factor between organizations capturing outsized value and those treating GenAI as a novelty.</p>
+                                <p class="text-sm text-secondary leading-relaxed">Adoption metrics reveal compounding returns: AI-assisted development teams report 30â€“55% faster delivery cycles, while generative tools in drug discovery compress early-stage molecule screening from years to weeks. Strategic depth of integration â€” not mere adoption â€” is the decisive factor between organizations capturing outsized value and those treating GenAI as a novelty.</p>
                             </div>
                         </div>
                     </div>
@@ -641,9 +641,9 @@
 
                 <!-- Navigation -->
                 <div class="flex items-center justify-between mt-8 pt-6 border-t border-slate-700">
-                    <button id="gai-prev" onclick="goToGenAIStep(_gaiCurrentStep - 1)" class="px-5 py-2 rounded-lg border text-sm font-semibold transition-all duration-200" style="border-color:#334155;color:#475569;background:transparent;cursor:not-allowed" disabled>← Previous</button>
+                    <button id="gai-prev" onclick="goToGenAIStep(_gaiCurrentStep - 1)" class="px-5 py-2 rounded-lg border text-sm font-semibold transition-all duration-200" style="border-color:#334155;color:#475569;background:transparent;cursor:not-allowed" disabled>â† Previous</button>
                     <span id="gai-counter" class="text-sm text-secondary font-medium">Step 1 of 3</span>
-                    <button id="gai-next" onclick="goToGenAIStep(_gaiCurrentStep + 1)" class="px-5 py-2 rounded-lg border text-sm font-semibold transition-all duration-200" style="background:#8B5CF6;border-color:#8B5CF6;color:#fff;cursor:pointer">Next →</button>
+                    <button id="gai-next" onclick="goToGenAIStep(_gaiCurrentStep + 1)" class="px-5 py-2 rounded-lg border text-sm font-semibold transition-all duration-200" style="background:#8B5CF6;border-color:#8B5CF6;color:#fff;cursor:pointer">Next â†’</button>
                 </div>
             </div>
         </section>
@@ -689,7 +689,7 @@
 
             <!-- LLM VIDEO EXPLAINER -->
             <div class="bg-surface rounded-xl p-6 border border-border shadow-sm mt-8">
-                <h3 class="text-xl font-bold mb-2">🎬 How Large Language Models Work</h3>
+                <h3 class="text-xl font-bold mb-2">ðŸŽ¬ How Large Language Models Work</h3>
                 <p class="text-sm text-secondary mb-5">Start with the short explainer, then scan the animated cards below for the three mechanics that matter most: tokenization, attention, and next-token generation.</p>
                 <div class="relative w-full rounded-xl overflow-hidden border border-slate-700 shadow-inner bg-slate-900" style="aspect-ratio: 16/9;">
                     <video
@@ -851,17 +851,17 @@
                 
                 <div class="flex flex-wrap justify-center items-center gap-2 md:gap-4 text-xs md:text-sm font-semibold text-primary">
                     <div class="border-2 border-accentA bg-slate-800 p-3 rounded-lg w-full md:w-auto text-center">Image Acquisition<br><span class="text-secondary font-normal text-xs">(MRI, CT, PET)</span></div>
-                    <div class="text-accentA hidden md:block">➔</div>
-                    <div class="text-accentA md:hidden text-center w-full">⬇</div>
+                    <div class="text-accentA hidden md:block">âž”</div>
+                    <div class="text-accentA md:hidden text-center w-full">â¬‡</div>
                     <div class="border-2 border-accentB bg-slate-800 p-3 rounded-lg w-full md:w-auto text-center">Segmentation<br><span class="text-secondary font-normal text-xs">(Masking ROI)</span></div>
-                    <div class="text-accentB hidden md:block">➔</div>
-                    <div class="text-accentB md:hidden text-center w-full">⬇</div>
+                    <div class="text-accentB hidden md:block">âž”</div>
+                    <div class="text-accentB md:hidden text-center w-full">â¬‡</div>
                     <div class="border-2 border-accentC bg-slate-800 p-3 rounded-lg w-full md:w-auto text-center">Feature Extraction<br><span class="text-secondary font-normal text-xs">(GLCM, Wavelets)</span></div>
-                    <div class="text-accentC hidden md:block">➔</div>
-                    <div class="text-accentC md:hidden text-center w-full">⬇</div>
+                    <div class="text-accentC hidden md:block">âž”</div>
+                    <div class="text-accentC md:hidden text-center w-full">â¬‡</div>
                     <div class="border-2 border-accentA bg-slate-800 p-3 rounded-lg w-full md:w-auto text-center">Model Training<br><span class="text-secondary font-normal text-xs">(ML/DL)</span></div>
-                    <div class="text-accentA hidden md:block">➔</div>
-                    <div class="text-accentA md:hidden text-center w-full">⬇</div>
+                    <div class="text-accentA hidden md:block">âž”</div>
+                    <div class="text-accentA md:hidden text-center w-full">â¬‡</div>
                     <div class="border-2 border-accentB bg-slate-800 p-3 rounded-lg w-full md:w-auto text-center">Prediction<br><span class="text-secondary font-normal text-xs">(Classification)</span></div>
                 </div>
             </div>
@@ -939,7 +939,7 @@
             <!-- LIVE AI DEMO: HUGGING FACE INTEGRATION -->
             <div class="bg-surface rounded-xl p-6 border border-border shadow-sm mt-8">
                 <h3 class="text-xl font-bold mb-3 flex items-center gap-2" style="color: #8B5CF6;">
-                    <span>🫁</span> Live AI Demo: Tuberculosis Detection
+                    <span>ðŸ«</span> Live AI Demo: Tuberculosis Detection
                 </h3>
                 <p class="text-sm text-secondary mb-2">
                     <a href="https://huggingface.co/spaces/shubhlokhugging/TB-Chest-Xray-Classification" target="_blank" rel="noopener noreferrer" class="text-accentB underline font-semibold">Live Demo: huggingface.co/spaces/shubhlokhugging/TB-Chest-Xray-Classification</a>
@@ -952,182 +952,27 @@
                     <li>A downloadable diagnostic DOCX report is generated for each scan.</li>
                 </ul>
 
-                <!-- HF-style 3-panel interface -->
-                <div class="rounded-2xl overflow-hidden border border-slate-700 shadow-xl mb-6" style="background:#0d1117">
-                    <!-- Browser-bar header -->
-                    <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-700" style="background:#161b22">
-                        <div class="flex gap-1.5 flex-shrink-0">
-                            <div class="w-3 h-3 rounded-full" style="background:#ff5f56"></div>
-                            <div class="w-3 h-3 rounded-full" style="background:#ffbd2e"></div>
-                            <div class="w-3 h-3 rounded-full" style="background:#27c93f"></div>
-                        </div>
-                        <div class="flex-1 min-w-0 rounded-md px-3 py-1 text-xs text-slate-400 font-mono truncate border border-slate-700" style="background:#0d1117">
-                            https://huggingface.co/spaces/shubhlokhugging/TB-Chest-Xray-Classification
-                        </div>
-                        <a href="https://huggingface.co/spaces/shubhlokhugging/TB-Chest-Xray-Classification" target="_blank" rel="noopener" class="flex-shrink-0 px-3 py-1 rounded-md text-xs font-semibold text-white transition-opacity hover:opacity-80" style="background:#8B5CF6">Reconnect Space</a>
-                    </div>
-
-                    <!-- App body -->
-                    <div class="p-5 md:p-6">
-                        <h4 class="text-xl font-bold text-white mb-1">🫁 TB Chest X-Ray Analysis System</h4>
-                        <p class="text-sm font-semibold mb-2" style="color:rgba(255,255,255,0.75)">EfficientNet-B0 · Grad-CAM Explainability · DOCX Report</p>
-                        <p class="text-xs text-slate-400 mb-5">Upload a posterior–anterior (PA) chest X-ray to receive an instant AI-powered classification, a Grad-CAM saliency heatmap, and a downloadable diagnostic report.</p>
-
-                        <!-- 3 panels -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
-
-                            <!-- Panel 1: Upload -->
-                            <div class="rounded-xl overflow-hidden border border-slate-600" style="background:#1c2333">
-                                <div class="flex items-center justify-between px-3 py-2 border-b border-slate-600" style="background:#21293d">
-                                    <div class="flex items-center gap-1.5">
-                                        <svg class="w-3.5 h-3.5" style="color:#60a5fa" fill="currentColor" viewBox="0 0 20 20"><path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/></svg>
-                                        <span class="text-xs font-semibold text-white">Upload Chest X-Ray</span>
-                                    </div>
-                                    <div class="flex items-center gap-0.5">
-                                        <button class="w-6 h-6 flex items-center justify-center rounded hover:bg-slate-600 text-slate-400 hover:text-white transition-colors" title="Fullscreen">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-                                        </button>
-                                        <button id="xray-clear-btn" class="w-6 h-6 flex items-center justify-center rounded hover:bg-slate-600 text-slate-400 hover:text-white transition-colors" title="Clear">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- Drop / preview area -->
-                                <div id="xray-dropzone" class="relative" style="min-height:215px; cursor:pointer; background:#111827">
-                                    <div id="xray-drop-hint" class="absolute inset-0 flex flex-col items-center justify-center gap-3 p-4 text-center">
-                                        <svg class="w-10 h-10 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                        </svg>
-                                        <p class="text-sm font-medium text-slate-400">Drag image here</p>
-                                        <p class="text-xs text-slate-600">— or —</p>
-                                        <label class="cursor-pointer">
-                                            <input type="file" id="xray-file-input" accept="image/*" class="hidden">
-                                            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 border border-slate-500 hover:border-slate-400 hover:text-white transition-colors" style="background:#21293d">Click to Upload</span>
-                                        </label>
-                                    </div>
-                                    <img id="xray-preview-img" class="hidden w-full object-contain" style="max-height:215px" alt="X-Ray Preview">
-                                </div>
-                                <!-- Toolbar -->
-                                <div class="flex items-center justify-center gap-5 px-3 py-2 border-t border-slate-600" style="background:#1c2333">
-                                    <label class="cursor-pointer text-slate-500 hover:text-slate-300 transition-colors" title="Upload file">
-                                        <input type="file" id="xray-file-input-2" accept="image/*" class="hidden">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-                                    </label>
-                                    <button class="text-slate-500 cursor-default" title="Webcam (unavailable)">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
-                                    </button>
-                                    <button class="text-slate-500 hover:text-slate-300 transition-colors" title="Paste from clipboard" id="xray-paste-btn">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Panel 2: Original X-Ray output -->
-                            <div class="rounded-xl overflow-hidden border border-slate-600" style="background:#1c2333">
-                                <div class="flex items-center justify-between px-3 py-2 border-b border-slate-600" style="background:#21293d">
-                                    <div class="flex items-center gap-1.5">
-                                        <svg class="w-3.5 h-3.5" style="color:#60a5fa" fill="currentColor" viewBox="0 0 20 20"><path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/></svg>
-                                        <span class="text-xs font-semibold text-white">Original X-Ray</span>
-                                    </div>
-                                    <div class="flex items-center gap-0.5">
-                                        <button class="w-6 h-6 flex items-center justify-center rounded hover:bg-slate-600 text-slate-400 hover:text-white transition-colors" title="Fullscreen">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-                                        </button>
-                                        <a id="xray-original-download" href="#" download="original-xray.jpg" class="w-6 h-6 hidden items-center justify-center rounded hover:bg-slate-600 text-slate-400 hover:text-white transition-colors" title="Download">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                        </a>
-                                        <button class="w-6 h-6 flex items-center justify-center rounded hover:bg-slate-600 text-slate-400 hover:text-white transition-colors" title="Share">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-center" style="min-height:215px; background:#111827">
-                                    <div id="xray-original-empty" class="flex flex-col items-center justify-center gap-2 text-center p-6">
-                                        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,0.04)">
-                                            <svg class="w-6 h-6 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                        </div>
-                                        <p class="text-xs text-slate-600">Run analysis to see<br>original X-ray</p>
-                                    </div>
-                                    <img id="xray-original-img" class="hidden w-full object-contain" style="max-height:215px" alt="Original X-Ray">
-                                </div>
-                            </div>
-
-                            <!-- Panel 3: Grad-CAM Heatmap output -->
-                            <div class="rounded-xl overflow-hidden border border-slate-600" style="background:#1c2333">
-                                <div class="flex items-center justify-between px-3 py-2 border-b border-slate-600" style="background:#21293d">
-                                    <div class="flex items-center gap-1.5">
-                                        <svg class="w-3.5 h-3.5" style="color:#60a5fa" fill="currentColor" viewBox="0 0 20 20"><path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/></svg>
-                                        <span class="text-xs font-semibold text-white">Grad-CAM Heatmap</span>
-                                    </div>
-                                    <div class="flex items-center gap-0.5">
-                                        <button class="w-6 h-6 flex items-center justify-center rounded hover:bg-slate-600 text-slate-400 hover:text-white transition-colors" title="Fullscreen">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-                                        </button>
-                                        <a id="xray-gradcam-download" href="#" download="gradcam-heatmap.jpg" class="w-6 h-6 hidden items-center justify-center rounded hover:bg-slate-600 text-slate-400 hover:text-white transition-colors" title="Download">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                        </a>
-                                        <button class="w-6 h-6 flex items-center justify-center rounded hover:bg-slate-600 text-slate-400 hover:text-white transition-colors" title="Share">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-center" style="min-height:215px; background:#111827">
-                                    <div id="xray-gradcam-empty" class="flex flex-col items-center justify-center gap-2 text-center p-6">
-                                        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,0.04)">
-                                            <svg class="w-6 h-6 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
-                                        </div>
-                                        <p class="text-xs text-slate-600">Run analysis to see<br>Grad-CAM heatmap</p>
-                                    </div>
-                                    <img id="xray-gradcam-img" class="hidden w-full object-contain" style="max-height:215px" alt="Grad-CAM Heatmap">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Analyze button + status + results -->
-                        <div class="flex flex-col items-center gap-3">
-                            <button id="xray-analyze-btn" disabled class="px-8 py-2.5 rounded-xl text-sm font-bold text-white opacity-40 cursor-not-allowed transition-all duration-200" style="background:#8B5CF6">🔬 Analyze</button>
-                            <!-- Loading -->
-                            <div id="xray-loading" class="hidden items-center gap-3 py-1">
-                                <div class="w-5 h-5 border-2 border-t-transparent rounded-full animate-spin" style="border-color:#8B5CF6;border-top-color:transparent"></div>
-                                <span class="text-sm text-slate-400 animate-pulse">Analyzing X-ray with AI…</span>
-                            </div>
-                            <!-- Results -->
-                            <div id="xray-results" class="hidden w-full">
-                                <div class="rounded-xl px-5 py-4 border border-slate-600" style="background:#1c2333">
-                                    <div class="flex items-center justify-between mb-2">
-                                        <div id="xray-result-label" class="text-xl font-bold"></div>
-                                        <button id="xray-try-another-btn" class="text-xs text-accentA hover:underline">Try another →</button>
-                                    </div>
-                                    <div id="xray-result-confidence" class="text-sm text-secondary mb-2"></div>
-                                    <div id="xray-result-bar-wrap" class="w-full bg-slate-700 rounded-full h-1.5 mb-3">
-                                        <div id="xray-result-bar-fill" class="h-1.5 rounded-full transition-all duration-700" style="width:0%"></div>
-                                    </div>
-                                    <p class="text-xs text-secondary">For full report &amp; DOCX download, use the <a href="https://shubhlokhugging-tb-chest-xray-classification.hf.space" target="_blank" rel="noopener" class="text-accentA hover:underline">Full Demo ↗</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Sample Images only â€” interactive analysis removed -->
 
                 <!-- Sample Images -->
                 <div class="mb-2">
-                    <p class="text-sm font-semibold text-primary mb-3">📂 Sample X-Ray Images — click one to load it into the uploader:</p>
+                    <p class="text-sm font-semibold text-primary mb-3">ðŸ“‚ Sample X-Ray Images:</p>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl">
                         <div class="flex flex-col items-center gap-2">
                             <img src="Data/Normal.jpg" alt="Normal Chest X-Ray" data-src="Data/Normal.jpg" draggable="true" class="xray-sample-img w-full max-w-[135px] rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-pointer hover:border-accentB transition-colors">
-                            <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">✓ Normal</span>
+                            <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">âœ“ Normal</span>
                         </div>
                         <div class="flex flex-col items-center gap-2">
                             <img src="Data/Normal.1.jpg" alt="Normal Chest X-Ray 2" data-src="Data/Normal.1.jpg" draggable="true" class="xray-sample-img w-full max-w-[135px] rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-pointer hover:border-accentB transition-colors">
-                            <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">✓ Normal</span>
+                            <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">âœ“ Normal</span>
                         </div>
                         <div class="flex flex-col items-center gap-2">
                             <img src="Data/TB.68.jpg" alt="TB Positive Chest X-Ray" data-src="Data/TB.68.jpg" draggable="true" class="xray-sample-img w-full max-w-[135px] rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-pointer hover:border-accentB transition-colors">
-                            <span class="text-xs font-semibold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full">⚠ TB Positive</span>
+                            <span class="text-xs font-semibold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full">âš  TB Positive</span>
                         </div>
                         <div class="flex flex-col items-center gap-2">
                             <img src="Data/TB.69.jpg" alt="TB Positive Chest X-Ray 2" data-src="Data/TB.69.jpg" draggable="true" class="xray-sample-img w-full max-w-[135px] rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-pointer hover:border-accentB transition-colors">
-                            <span class="text-xs font-semibold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full">⚠ TB Positive</span>
+                            <span class="text-xs font-semibold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full">âš  TB Positive</span>
                         </div>
                     </div>
                 </div>
@@ -1139,7 +984,7 @@
             <div class="mb-10">
                 <h2 class="text-4xl font-bold text-primary mb-4">AI-Driven Digital Therapeutics Solution Stack</h2>
                 <p class="text-lg text-secondary leading-relaxed border-l-4 border-accentC pl-4 bg-surface p-4 rounded-r shadow-sm">
-                    Modern healthcare platforms are not powered by a single AI technology — they are layered stacks where each tier delegates to the most appropriate model class. This section maps the five functional layers of a digital therapeutics architecture to the AI disciplines explored throughout this report.
+                    Modern healthcare platforms are not powered by a single AI technology â€” they are layered stacks where each tier delegates to the most appropriate model class. This section maps the five functional layers of a digital therapeutics architecture to the AI disciplines explored throughout this report.
                 </p>
             </div>
 
@@ -1148,11 +993,11 @@
 
                 <!-- Layer Explorer -->
                 <div class="flex flex-wrap gap-2 justify-center mb-6" id="stack-layer-btns">
-                    <button onclick="showStackLayer('ui')"      id="stack-btn-ui"      class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:#06B6D4;border-color:#06B6D4;color:#0F172A">1 · Visualization &amp; UI</button>
-                    <button onclick="showStackLayer('info')"    id="stack-btn-info"    class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">2 · Information Broadcasting</button>
-                    <button onclick="showStackLayer('treat')"   id="stack-btn-treat"   class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">3 · Treatment &amp; Monitoring</button>
-                    <button onclick="showStackLayer('data')"    id="stack-btn-data"    class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">4 · Analytics &amp; Insights</button>
-                    <button onclick="showStackLayer('capture')" id="stack-btn-capture" class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">5 · Data Capture &amp; Storage</button>
+                    <button onclick="showStackLayer('ui')"      id="stack-btn-ui"      class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:#06B6D4;border-color:#06B6D4;color:#0F172A">1 Â· Visualization &amp; UI</button>
+                    <button onclick="showStackLayer('info')"    id="stack-btn-info"    class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">2 Â· Information Broadcasting</button>
+                    <button onclick="showStackLayer('treat')"   id="stack-btn-treat"   class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">3 Â· Treatment &amp; Monitoring</button>
+                    <button onclick="showStackLayer('data')"    id="stack-btn-data"    class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">4 Â· Analytics &amp; Insights</button>
+                    <button onclick="showStackLayer('capture')" id="stack-btn-capture" class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">5 Â· Data Capture &amp; Storage</button>
                 </div>
 
                 <div id="stack-layer-panel" class="bg-slate-800 rounded-xl border border-slate-700 p-6" style="min-height:140px">
@@ -1161,39 +1006,39 @@
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">Foundation Models (LLMs)</span>
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">Generative AI</span>
                         </div>
-                        <p class="text-sm text-secondary leading-relaxed">The interface layer is where LLMs earn their place as conversational agents — powering symptom triage chatbots, natural language search, and dynamic report narration. Generative AI enables adaptive UI copy that adjusts clinical complexity based on whether the user is a patient or a specialist, without requiring separate application builds.</p>
+                        <p class="text-sm text-secondary leading-relaxed">The interface layer is where LLMs earn their place as conversational agents â€” powering symptom triage chatbots, natural language search, and dynamic report narration. Generative AI enables adaptive UI copy that adjusts clinical complexity based on whether the user is a patient or a specialist, without requiring separate application builds.</p>
                     </div>
                     <div id="stack-panel-info" class="hidden">
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">Generative AI</span>
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">Transformer Retrieval</span>
                         </div>
-                        <p class="text-sm text-secondary leading-relaxed">Retrieval-Augmented Generation (RAG) pipelines built on transformer encoders let clinicians query vetted medical literature in natural language — the system retrieves, ranks, and synthesises evidence rather than hallucinating citations. Generative models then format findings to the right reading level and channel (push notification vs. clinical note vs. patient summary).</p>
+                        <p class="text-sm text-secondary leading-relaxed">Retrieval-Augmented Generation (RAG) pipelines built on transformer encoders let clinicians query vetted medical literature in natural language â€” the system retrieves, ranks, and synthesises evidence rather than hallucinating citations. Generative models then format findings to the right reading level and channel (push notification vs. clinical note vs. patient summary).</p>
                     </div>
                     <div id="stack-panel-treat" class="hidden">
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">CNN Vision Models</span>
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">Foundation Models</span>
                         </div>
-                        <p class="text-sm text-secondary leading-relaxed">CNNs underpin wearable signal classification — detecting arrhythmias from ECG patches or fall risk from accelerometer streams. Transformer-based clinical decision support (CDSS) models integrate heterogeneous inputs (labs, vitals, imaging) to predict deterioration risk hours earlier than rule-based systems, allowing proactive rather than reactive intervention.</p>
+                        <p class="text-sm text-secondary leading-relaxed">CNNs underpin wearable signal classification â€” detecting arrhythmias from ECG patches or fall risk from accelerometer streams. Transformer-based clinical decision support (CDSS) models integrate heterogeneous inputs (labs, vitals, imaging) to predict deterioration risk hours earlier than rule-based systems, allowing proactive rather than reactive intervention.</p>
                     </div>
                     <div id="stack-panel-data" class="hidden">
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">CNN Radiomics</span>
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">Explainable GenAI</span>
                         </div>
-                        <p class="text-sm text-secondary leading-relaxed">Radiomic feature extraction via CNNs encodes thousands of quantitative imaging biomarkers that conventional analytics miss. Explainability layers — gradient-weighted class activation maps (Grad-CAM) and counterfactual explanations generated by language models — translate model confidence scores into auditable clinical reasoning, satisfying regulatory requirements like FDA's AI/ML action plan.</p>
+                        <p class="text-sm text-secondary leading-relaxed">Radiomic feature extraction via CNNs encodes thousands of quantitative imaging biomarkers that conventional analytics miss. Explainability layers â€” gradient-weighted class activation maps (Grad-CAM) and counterfactual explanations generated by language models â€” translate model confidence scores into auditable clinical reasoning, satisfying regulatory requirements like FDA's AI/ML action plan.</p>
                     </div>
                     <div id="stack-panel-capture" class="hidden">
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">CNN Image Capture</span>
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">Foundation Model ETL</span>
                         </div>
-                        <p class="text-sm text-secondary leading-relaxed">Edge-deployed CNNs perform real-time image quality assessment and auto-segmentation at point-of-capture — rejecting blurry scans before they enter the pipeline. Transformer-based entity extraction from clinical notes and discharge summaries populates structured EHR fields automatically, cutting manual documentation burden while maintaining FHIR R4 / HL7 interoperability standards.</p>
+                        <p class="text-sm text-secondary leading-relaxed">Edge-deployed CNNs perform real-time image quality assessment and auto-segmentation at point-of-capture â€” rejecting blurry scans before they enter the pipeline. Transformer-based entity extraction from clinical notes and discharge summaries populates structured EHR fields automatically, cutting manual documentation burden while maintaining FHIR R4 / HL7 interoperability standards.</p>
                     </div>
                 </div>
 
-                <p class="text-xs text-secondary text-center mt-4">Cross-cutting enablers (Security, Interoperability, MLOps) apply to every layer — explore the <button onclick="switchTab('ethics')" class="underline hover:text-primary transition-colors">Ethics &amp; Challenges</button> tab for governance considerations.</p>
+                <p class="text-xs text-secondary text-center mt-4">Cross-cutting enablers (Security, Interoperability, MLOps) apply to every layer â€” explore the <button onclick="switchTab('ethics')" class="underline hover:text-primary transition-colors">Ethics &amp; Challenges</button> tab for governance considerations.</p>
             </div>
         </section>
 
@@ -1255,11 +1100,7 @@
                 setTimeout(initCNN3D, 50);
             }
 
-            if (tabId === 'healthcare' && !hfConnected) {
-                // Initialize the X-ray uploader when the healthcare tab is opened
-                setTimeout(initXrayUploader, 50);
-                hfConnected = true;
-            }
+
         }
 
         // --- AI Solutions Stack Layer Explorer ---
@@ -1339,7 +1180,7 @@
             next.style.borderColor = n === 3 ? '#334155' : '#8B5CF6';
             next.style.color = n === 3 ? '#475569' : '#fff';
             next.style.cursor = n === 3 ? 'not-allowed' : 'pointer';
-            next.textContent = n === 3 ? 'Done ✓' : 'Next →';
+            next.textContent = n === 3 ? 'Done âœ“' : 'Next â†’';
         }
 
         function updateGenAIText(type) {
@@ -1776,371 +1617,6 @@
             };
 
             chart.update();
-        }
-
-        /* --- X-RAY UPLOAD ZONE LOGIC --- */
-        var xrayCurrentFile = null;
-        var xrayDragCount = 0;
-
-        function initXrayUploader() {
-            // Sample images: click to load + drag support
-            document.querySelectorAll('.xray-sample-img').forEach(function(img) {
-                img.addEventListener('click', function() {
-                    loadXrayFromUrl(img.dataset.src);
-                });
-                img.addEventListener('dragstart', function(e) {
-                    e.dataTransfer.setData('text/x-sample-xray', img.dataset.src);
-                    e.dataTransfer.effectAllowed = 'copy';
-                });
-            });
-
-            var dropzone = document.getElementById('xray-dropzone');
-            // Click on dropzone (not on the label/input) triggers file picker
-            dropzone.addEventListener('click', function(e) {
-                if (e.target === dropzone || e.target.id === 'xray-drop-hint' || e.target.tagName === 'svg' || e.target.tagName === 'path' || e.target.tagName === 'P') {
-                    document.getElementById('xray-file-input').click();
-                }
-            });
-            dropzone.addEventListener('dragover', function(e) { e.preventDefault(); });
-            dropzone.addEventListener('dragenter', function(e) {
-                e.preventDefault();
-                xrayDragCount++;
-                dropzone.style.outline = '2px dashed #8B5CF6';
-            });
-            dropzone.addEventListener('dragleave', function() {
-                xrayDragCount--;
-                if (xrayDragCount === 0) dropzone.style.outline = '';
-            });
-            dropzone.addEventListener('drop', function(e) {
-                xrayDragCount = 0;
-                dropzone.style.outline = '';
-                handleXrayDrop(e);
-            });
-
-            document.getElementById('xray-file-input').addEventListener('change', function() {
-                handleXrayFile(this.files[0]);
-            });
-            document.getElementById('xray-file-input-2').addEventListener('change', function() {
-                handleXrayFile(this.files[0]);
-            });
-            document.getElementById('xray-analyze-btn').addEventListener('click', analyzeXray);
-            document.getElementById('xray-clear-btn').addEventListener('click', resetXrayUploader);
-            document.getElementById('xray-try-another-btn').addEventListener('click', resetXrayUploader);
-            // Paste from clipboard
-            document.getElementById('xray-paste-btn').addEventListener('click', function() {
-                navigator.clipboard.read().then(function(items) {
-                    for (var item of items) {
-                        var imgType = item.types.find(function(t) { return t.startsWith('image/'); });
-                        if (imgType) {
-                            item.getType(imgType).then(function(blob) {
-                                var file = new File([blob], 'pasted-xray.png', { type: blob.type });
-                                setXrayFile(file);
-                            });
-                            break;
-                        }
-                    }
-                }).catch(function() { /* clipboard not available or no image */ });
-            });
-        }
-
-        function handleXrayDrop(e) {
-            e.preventDefault();
-
-            var sampleSrc = e.dataTransfer.getData('text/x-sample-xray');
-            if (sampleSrc) {
-                loadXrayFromUrl(sampleSrc);
-                return;
-            }
-
-            var files = e.dataTransfer.files;
-            if (files && files.length > 0 && files[0].type.startsWith('image/')) {
-                setXrayFile(files[0]);
-            }
-        }
-
-        function handleXrayFile(file) {
-            if (file && file.type.startsWith('image/')) {
-                setXrayFile(file);
-            }
-        }
-
-        function setXrayFile(file) {
-            xrayCurrentFile = file;
-            var reader = new FileReader();
-            reader.onload = function(ev) {
-                document.getElementById('xray-preview-img').src = ev.target.result;
-                showXrayPreview();
-            };
-            reader.readAsDataURL(file);
-        }
-
-        async function loadXrayFromUrl(url) {
-            try {
-                var res = await fetch(url);
-                var blob = await res.blob();
-                var fileName = url.split('/').pop();
-                var file = new File([blob], fileName, { type: blob.type || 'image/jpeg' });
-                setXrayFile(file);
-            } catch (err) {
-                console.error('Failed to load sample image:', err);
-            }
-        }
-
-        function showXrayPreview() {
-            document.getElementById('xray-drop-hint').classList.add('hidden');
-            document.getElementById('xray-preview-img').classList.remove('hidden');
-            document.getElementById('xray-results').classList.add('hidden');
-            // Enable analyze button
-            var btn = document.getElementById('xray-analyze-btn');
-            btn.disabled = false;
-            btn.style.opacity = '1';
-            btn.style.cursor = 'pointer';
-        }
-
-        function resetXrayUploader() {
-            xrayCurrentFile = null;
-            document.getElementById('xray-drop-hint').classList.remove('hidden');
-            document.getElementById('xray-preview-img').classList.add('hidden');
-            document.getElementById('xray-preview-img').src = '';
-            document.getElementById('xray-results').classList.add('hidden');
-            var loading = document.getElementById('xray-loading');
-            loading.classList.add('hidden');
-            loading.classList.remove('flex');
-            document.getElementById('xray-file-input').value = '';
-            document.getElementById('xray-file-input-2').value = '';
-            // Disable analyze button
-            var btn = document.getElementById('xray-analyze-btn');
-            btn.disabled = true;
-            btn.style.opacity = '0.4';
-            btn.style.cursor = 'not-allowed';
-            // Clear result panels
-            document.getElementById('xray-original-img').classList.add('hidden');
-            document.getElementById('xray-original-img').src = '';
-            document.getElementById('xray-original-empty').classList.remove('hidden');
-            document.getElementById('xray-gradcam-img').classList.add('hidden');
-            document.getElementById('xray-gradcam-img').src = '';
-            document.getElementById('xray-gradcam-empty').classList.remove('hidden');
-            var dl1 = document.getElementById('xray-original-download');
-            dl1.classList.add('hidden'); dl1.classList.remove('flex');
-            var dl2 = document.getElementById('xray-gradcam-download');
-            dl2.classList.add('hidden'); dl2.classList.remove('flex');
-        }
-
-        function fileToBase64(file) {
-            return new Promise(function(resolve, reject) {
-                var reader = new FileReader();
-                reader.onload = function() { resolve(reader.result); };
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
-        }
-
-        async function analyzeXray() {
-            if (!xrayCurrentFile) return;
-
-            // Disable button during analysis
-            var analyzeBtn = document.getElementById('xray-analyze-btn');
-            analyzeBtn.disabled = true;
-            analyzeBtn.style.opacity = '0.5';
-            analyzeBtn.style.cursor = 'not-allowed';
-            var loading = document.getElementById('xray-loading');
-            loading.classList.remove('hidden');
-            loading.classList.add('flex');
-
-            var HF_SPACE = 'https://shubhlokhugging-tb-chest-xray-classification.hf.space';
-
-            try {
-                // Step 1: Upload file via Gradio 5 /gradio_api/upload
-                var formData = new FormData();
-                formData.append('files', xrayCurrentFile);
-                var uploadRes = await fetch(HF_SPACE + '/gradio_api/upload', {
-                    method: 'POST',
-                    body: formData
-                });
-                if (!uploadRes.ok) throw new Error('Upload failed (HTTP ' + uploadRes.status + ')');
-                var uploadedFiles = await uploadRes.json();
-                if (!Array.isArray(uploadedFiles) || uploadedFiles.length === 0) {
-                    throw new Error('Upload returned empty response');
-                }
-                var uploadedPath = typeof uploadedFiles[0] === 'string'
-                    ? uploadedFiles[0]
-                    : (uploadedFiles[0].path || uploadedFiles[0]);
-
-                // Step 2: Submit to /gradio_api/call/analyze
-                var callRes = await fetch(HF_SPACE + '/gradio_api/call/analyze', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        data: [{
-                            path: uploadedPath,
-                            orig_name: xrayCurrentFile.name,
-                            mime_type: xrayCurrentFile.type || 'image/jpeg',
-                            size: xrayCurrentFile.size,
-                            is_stream: false,
-                            meta: { _type: 'gradio.FileData' }
-                        }]
-                    })
-                });
-                if (!callRes.ok) throw new Error('Submission failed (HTTP ' + callRes.status + ')');
-                var callData = await callRes.json();
-                var eventId = callData.event_id;
-                if (!eventId) throw new Error('No event_id returned — space may be sleeping, try again.');
-
-                // Step 3: Poll result via SSE at /gradio_api/call/analyze/{event_id}
-                await new Promise(function(resolve, reject) {
-                    var evtSource = new EventSource(HF_SPACE + '/gradio_api/call/analyze/' + eventId);
-                    var timeout = setTimeout(function() {
-                        evtSource.close();
-                        reject(new Error('Timed out — the space may be waking up, please try again in a moment.'));
-                    }, 60000);
-                    evtSource.addEventListener('complete', function(e) {
-                        clearTimeout(timeout);
-                        evtSource.close();
-                        try {
-                            var result = JSON.parse(e.data);
-                            showXrayResult(result);
-                            resolve();
-                        } catch (parseErr) {
-                            reject(new Error('Could not parse result from AI service'));
-                        }
-                    });
-                    evtSource.addEventListener('error', function(e) {
-                        clearTimeout(timeout);
-                        evtSource.close();
-                        try {
-                            var errData = JSON.parse(e.data || '{}');
-                            reject(new Error(errData.message || 'AI service returned an error'));
-                        } catch (_) {
-                            reject(new Error('AI service error — please try the Full Demo'));
-                        }
-                    });
-                    evtSource.onerror = function() {
-                        clearTimeout(timeout);
-                        evtSource.close();
-                        reject(new Error('Lost connection to AI service — please try again.'));
-                    };
-                });
-
-            } catch (err) {
-                console.error('X-ray analysis error:', err);
-                loading.classList.add('hidden');
-                loading.classList.remove('flex');
-                // Re-enable button
-                var btnEl = document.getElementById('xray-analyze-btn');
-                btnEl.disabled = false;
-                btnEl.style.opacity = '1';
-                btnEl.style.cursor = 'pointer';
-                // Show error below panels
-                var errNote = document.getElementById('xray-api-error');
-                if (!errNote) {
-                    errNote = document.createElement('p');
-                    errNote.id = 'xray-api-error';
-                    errNote.className = 'text-xs text-red-400 mt-1 text-center';
-                    document.getElementById('xray-analyze-btn').parentNode.appendChild(errNote);
-                }
-                errNote.textContent = 'Analysis failed: ' + err.message + '. Try the Full Demo.';
-            }
-        }
-
-        function showXrayResult(data) {
-            var HF_SPACE = 'https://shubhlokhugging-tb-chest-xray-classification.hf.space';
-            var loading = document.getElementById('xray-loading');
-            loading.classList.add('hidden');
-            loading.classList.remove('flex');
-
-            // Re-enable analyze button
-            var analyzeBtn = document.getElementById('xray-analyze-btn');
-            analyzeBtn.disabled = false;
-            analyzeBtn.style.opacity = '1';
-            analyzeBtn.style.cursor = 'pointer';
-
-            // Helper: resolve a Gradio image value to a usable URL
-            function resolveImageUrl(val) {
-                if (!val) return null;
-                if (typeof val === 'string') return val;
-                if (val.url) return val.url;
-                if (val.path) return HF_SPACE + '/gradio_api/file=' + val.path;
-                return null;
-            }
-
-            var label = 'Unknown';
-            var confidence = null;
-
-            if (Array.isArray(data) && data.length > 0) {
-                // Gradio 5 format: [originalImage, gradcamImage, reportText, docxFile]
-                var origUrl = resolveImageUrl(data[0]);
-                var heatmapUrl = resolveImageUrl(data[1]);
-                var reportText = typeof data[2] === 'string' ? data[2] : '';
-
-                // Populate Original X-Ray panel
-                if (origUrl) {
-                    var origImg = document.getElementById('xray-original-img');
-                    origImg.src = origUrl;
-                    origImg.classList.remove('hidden');
-                    document.getElementById('xray-original-empty').classList.add('hidden');
-                    var dl1 = document.getElementById('xray-original-download');
-                    dl1.href = origUrl;
-                    dl1.classList.remove('hidden');
-                    dl1.classList.add('flex');
-                }
-
-                // Populate Grad-CAM Heatmap panel
-                if (heatmapUrl) {
-                    var heatmapImg = document.getElementById('xray-gradcam-img');
-                    heatmapImg.src = heatmapUrl;
-                    heatmapImg.classList.remove('hidden');
-                    document.getElementById('xray-gradcam-empty').classList.add('hidden');
-                    var dl2 = document.getElementById('xray-gradcam-download');
-                    dl2.href = heatmapUrl;
-                    dl2.classList.remove('hidden');
-                    dl2.classList.add('flex');
-                }
-
-                // Parse label & confidence from report text
-                if (reportText) {
-                    if (/tuberculosis|tb[\s\-]?positive/i.test(reportText)) {
-                        label = 'TB Positive';
-                    } else if (/normal/i.test(reportText)) {
-                        label = 'Normal';
-                    }
-                    var confMatch = reportText.match(/confidence[:\s]+(\d+(?:\.\d+)?)\s*%/i)
-                        || reportText.match(/(\d+(?:\.\d+)?)\s*%\s*confidence/i)
-                        || reportText.match(/(\d+(?:\.\d+)?)\s*%/);
-                    if (confMatch) confidence = parseFloat(confMatch[1]) / 100;
-                } else if (typeof data[0] === 'string' && !origUrl) {
-                    label = data[0];
-                    confidence = typeof data[1] === 'number' ? data[1] : null;
-                } else if (data[0] && typeof data[0] === 'object' && data[0].label) {
-                    label = data[0].label;
-                    var confs = data[0].confidences;
-                    if (Array.isArray(confs)) {
-                        var top = confs.find(function(c) { return c.label === label; });
-                        confidence = top ? top.confidence : null;
-                    }
-                }
-            }
-
-            var isNormal = label.toLowerCase().includes('normal');
-            var resultColor = isNormal ? '#4ade80' : '#f87171';
-            var barColor = isNormal ? '#22c55e' : '#ef4444';
-            var icon = isNormal ? '✅' : '⚠️';
-
-            var labelEl = document.getElementById('xray-result-label');
-            labelEl.style.color = resultColor;
-            labelEl.textContent = icon + ' ' + label;
-
-            if (confidence !== null) {
-                var pct = Math.round(confidence * 100);
-                document.getElementById('xray-result-confidence').textContent = 'Confidence: ' + pct + '%';
-                var barFill = document.getElementById('xray-result-bar-fill');
-                barFill.style.width = pct + '%';
-                barFill.style.background = barColor;
-                document.getElementById('xray-result-bar-wrap').classList.remove('hidden');
-            } else {
-                document.getElementById('xray-result-bar-wrap').classList.add('hidden');
-            }
-
-            document.getElementById('xray-results').classList.remove('hidden');
         }
 
         // --- Image Lightbox ---
