@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -203,7 +203,7 @@
         </div>
 
         <div class="mt-auto hidden md:block pt-8 text-xs text-secondary border-t border-border mt-8">
-            <p>Data synthesized for educational exploration. Shubhangi Lokhande created with ðŸ’—</p>
+            <p>Data synthesized for educational exploration. Shubhangi Lokhande created with 💗</p>
         </div>
     </nav>
 
@@ -306,7 +306,7 @@
                                 <strong>Cross-Entropy Loss:</strong>
                                 <div class="text-xs text-secondary mt-1">Measures difference between predicted probability and true label.</div>
                                 <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentA">
-                                    L = - Î£ y log(p)
+                                    L = - Σ y log(p)
                                 </div>
                             </li>
 
@@ -314,7 +314,7 @@
                                 <strong>Focal Loss:</strong>
                                 <div class="text-xs text-secondary mt-1">Focuses more on hard examples, reduces impact of easy ones.</div>
                                 <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentB">
-                                    FL = (1 âˆ’ p)^Î³ log(p)
+                                    FL = (1 − p)^γ log(p)
                                 </div>
                             </li>
 
@@ -322,7 +322,7 @@
                                 <strong>Dice Loss:</strong>
                                 <div class="text-xs text-secondary mt-1">Maximizes overlap between predicted and true regions.</div>
                                 <div class="bg-slate-800 p-2 rounded mt-1 text-xs text-accentC">
-                                    Dice = 2|Xâˆ©Y| / (|X| + |Y|)
+                                    Dice = 2|X∩Y| / (|X| + |Y|)
                                 </div>
                             </li>
 
@@ -407,12 +407,12 @@
                                 <div class="bg-gradient-to-r from-accentB to-accentC h-2 rounded" style="width: 90%"></div>
                             </div>
                             <span class="text-secondary block mt-1">
-                                Evaluates modelâ€™s ability to distinguish between classes across all thresholds (higher is better).
+                                Evaluates model’s ability to distinguish between classes across all thresholds (higher is better).
                             </span>
 
                             <!-- MINI VISUAL -->
                             <div class="mt-2 bg-slate-800 p-2 rounded text-[10px] text-secondary">
-                                TPR (Recall) â†‘ vs FPR â†’ &nbsp; | &nbsp; AUC â‰ˆ 0.90 â†’ Strong classifier
+                                TPR (Recall) ↑ vs FPR → &nbsp; | &nbsp; AUC ≈ 0.90 → Strong classifier
                             </div>
                         </div>
                     </div>
@@ -493,7 +493,7 @@
                 <div class="text-center mt-4">
                     <button onclick="simulateTraining()" 
                         class="px-4 py-2 bg-accentA text-black rounded font-semibold">
-                        â–¶ Start Training
+                        ▶ Start Training
                     </button>
                 </div>
             </div>
@@ -515,7 +515,7 @@
                              class="bg-slate-800 p-4 rounded border border-slate-600 cursor-pointer">
                             <h4 class="text-accentA font-bold mb-2">Underfitting</h4>
                             <p class="text-xs">
-                                Model is too simple. Both training and validation loss remain high â†’ poor learning.
+                                Model is too simple. Both training and validation loss remain high → poor learning.
                             </p>
                         </div>
 
@@ -524,7 +524,7 @@
                              class="bg-slate-800 p-4 rounded border border-slate-600 cursor-pointer">
                             <h4 class="text-green-400 font-bold mb-2">Good Fit</h4>
                             <p class="text-xs">
-                                Training and validation loss decrease together â†’ model generalizes well.
+                                Training and validation loss decrease together → model generalizes well.
                             </p>
                         </div>
 
@@ -533,7 +533,7 @@
                              class="bg-slate-800 p-4 rounded border border-slate-600 cursor-pointer">
                             <h4 class="text-accentC font-bold mb-2">Overfitting</h4>
                             <p class="text-xs">
-                                Training loss decreases but validation loss increases â†’ model memorizes data.
+                                Training loss decreases but validation loss increases → model memorizes data.
                             </p>
                         </div>
 
@@ -583,7 +583,7 @@
             <!-- Infographic Journey Stepper -->
             <div class="bg-surface rounded-xl border border-border shadow-sm p-8 mb-8">
                 <h3 class="text-xl font-bold text-center mb-1">Generative AI: A Visual Journey</h3>
-                <p class="text-sm text-secondary text-center mb-8">Step through key concepts â€” one infographic at a time</p>
+                <p class="text-sm text-secondary text-center mb-8">Step through key concepts — one infographic at a time</p>
 
                 <!-- Step Indicators -->
                 <div class="flex items-start justify-center mb-8">
@@ -611,7 +611,7 @@
                             <div>
                                 <span class="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">Step 1 of 3</span>
                                 <h4 class="text-xl font-bold mb-3" style="color:#8B5CF6">The Probabilistic Shift</h4>
-                                <p class="text-sm text-secondary leading-relaxed">Traditional AI defines hard decision boundaries â€” it answers <em>"which class does this belong to?"</em> Generative AI instead learns the full probability landscape of the training data, enabling it to sample entirely new, valid examples from that distribution. This pivot was made commercially viable by self-supervised pre-training on internet-scale corpora, eliminating the need for expensive human-labelled datasets at scale.</p>
+                                <p class="text-sm text-secondary leading-relaxed">Traditional AI defines hard decision boundaries — it answers <em>"which class does this belong to?"</em> Generative AI instead learns the full probability landscape of the training data, enabling it to sample entirely new, valid examples from that distribution. This pivot was made commercially viable by self-supervised pre-training on internet-scale corpora, eliminating the need for expensive human-labelled datasets at scale.</p>
                             </div>
                         </div>
                     </div>
@@ -622,7 +622,7 @@
                             <div>
                                 <span class="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">Step 2 of 3</span>
                                 <h4 class="text-xl font-bold mb-3" style="color:#06B6D4">Emergent Zero-Shot Capability</h4>
-                                <p class="text-sm text-secondary leading-relaxed">Foundation models develop surprising capabilities that were never explicitly trained â€” a phenomenon called <em>emergence</em>. At sufficient scale, a model trained purely to predict the next token becomes a reasoner, coder, and translator. Zero-shot transfer means one model serves countless downstream tasks through natural language prompts alone, fundamentally reshaping the economics of AI deployment.</p>
+                                <p class="text-sm text-secondary leading-relaxed">Foundation models develop surprising capabilities that were never explicitly trained — a phenomenon called <em>emergence</em>. At sufficient scale, a model trained purely to predict the next token becomes a reasoner, coder, and translator. Zero-shot transfer means one model serves countless downstream tasks through natural language prompts alone, fundamentally reshaping the economics of AI deployment.</p>
                             </div>
                         </div>
                     </div>
@@ -633,7 +633,7 @@
                             <div>
                                 <span class="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">Step 3 of 3</span>
                                 <h4 class="text-xl font-bold mb-3" style="color:#EC4899">Measured Real-World Impact</h4>
-                                <p class="text-sm text-secondary leading-relaxed">Adoption metrics reveal compounding returns: AI-assisted development teams report 30â€“55% faster delivery cycles, while generative tools in drug discovery compress early-stage molecule screening from years to weeks. Strategic depth of integration â€” not mere adoption â€” is the decisive factor between organizations capturing outsized value and those treating GenAI as a novelty.</p>
+                                <p class="text-sm text-secondary leading-relaxed">Adoption metrics reveal compounding returns: AI-assisted development teams report 30–55% faster delivery cycles, while generative tools in drug discovery compress early-stage molecule screening from years to weeks. Strategic depth of integration — not mere adoption — is the decisive factor between organizations capturing outsized value and those treating GenAI as a novelty.</p>
                             </div>
                         </div>
                     </div>
@@ -641,9 +641,9 @@
 
                 <!-- Navigation -->
                 <div class="flex items-center justify-between mt-8 pt-6 border-t border-slate-700">
-                    <button id="gai-prev" onclick="goToGenAIStep(_gaiCurrentStep - 1)" class="px-5 py-2 rounded-lg border text-sm font-semibold transition-all duration-200" style="border-color:#334155;color:#475569;background:transparent;cursor:not-allowed" disabled>â† Previous</button>
+                    <button id="gai-prev" onclick="goToGenAIStep(_gaiCurrentStep - 1)" class="px-5 py-2 rounded-lg border text-sm font-semibold transition-all duration-200" style="border-color:#334155;color:#475569;background:transparent;cursor:not-allowed" disabled>← Previous</button>
                     <span id="gai-counter" class="text-sm text-secondary font-medium">Step 1 of 3</span>
-                    <button id="gai-next" onclick="goToGenAIStep(_gaiCurrentStep + 1)" class="px-5 py-2 rounded-lg border text-sm font-semibold transition-all duration-200" style="background:#8B5CF6;border-color:#8B5CF6;color:#fff;cursor:pointer">Next â†’</button>
+                    <button id="gai-next" onclick="goToGenAIStep(_gaiCurrentStep + 1)" class="px-5 py-2 rounded-lg border text-sm font-semibold transition-all duration-200" style="background:#8B5CF6;border-color:#8B5CF6;color:#fff;cursor:pointer">Next →</button>
                 </div>
             </div>
         </section>
@@ -689,7 +689,7 @@
 
             <!-- LLM VIDEO EXPLAINER -->
             <div class="bg-surface rounded-xl p-6 border border-border shadow-sm mt-8">
-                <h3 class="text-xl font-bold mb-2">ðŸŽ¬ How Large Language Models Work</h3>
+                <h3 class="text-xl font-bold mb-2">🎬 How Large Language Models Work</h3>
                 <p class="text-sm text-secondary mb-5">Start with the short explainer, then scan the animated cards below for the three mechanics that matter most: tokenization, attention, and next-token generation.</p>
                 <div class="relative w-full rounded-xl overflow-hidden border border-slate-700 shadow-inner bg-slate-900" style="aspect-ratio: 16/9;">
                     <video
@@ -851,17 +851,17 @@
                 
                 <div class="flex flex-wrap justify-center items-center gap-2 md:gap-4 text-xs md:text-sm font-semibold text-primary">
                     <div class="border-2 border-accentA bg-slate-800 p-3 rounded-lg w-full md:w-auto text-center">Image Acquisition<br><span class="text-secondary font-normal text-xs">(MRI, CT, PET)</span></div>
-                    <div class="text-accentA hidden md:block">âž”</div>
-                    <div class="text-accentA md:hidden text-center w-full">â¬‡</div>
+                    <div class="text-accentA hidden md:block">➔</div>
+                    <div class="text-accentA md:hidden text-center w-full">⬇</div>
                     <div class="border-2 border-accentB bg-slate-800 p-3 rounded-lg w-full md:w-auto text-center">Segmentation<br><span class="text-secondary font-normal text-xs">(Masking ROI)</span></div>
-                    <div class="text-accentB hidden md:block">âž”</div>
-                    <div class="text-accentB md:hidden text-center w-full">â¬‡</div>
+                    <div class="text-accentB hidden md:block">➔</div>
+                    <div class="text-accentB md:hidden text-center w-full">⬇</div>
                     <div class="border-2 border-accentC bg-slate-800 p-3 rounded-lg w-full md:w-auto text-center">Feature Extraction<br><span class="text-secondary font-normal text-xs">(GLCM, Wavelets)</span></div>
-                    <div class="text-accentC hidden md:block">âž”</div>
-                    <div class="text-accentC md:hidden text-center w-full">â¬‡</div>
+                    <div class="text-accentC hidden md:block">➔</div>
+                    <div class="text-accentC md:hidden text-center w-full">⬇</div>
                     <div class="border-2 border-accentA bg-slate-800 p-3 rounded-lg w-full md:w-auto text-center">Model Training<br><span class="text-secondary font-normal text-xs">(ML/DL)</span></div>
-                    <div class="text-accentA hidden md:block">âž”</div>
-                    <div class="text-accentA md:hidden text-center w-full">â¬‡</div>
+                    <div class="text-accentA hidden md:block">➔</div>
+                    <div class="text-accentA md:hidden text-center w-full">⬇</div>
                     <div class="border-2 border-accentB bg-slate-800 p-3 rounded-lg w-full md:w-auto text-center">Prediction<br><span class="text-secondary font-normal text-xs">(Classification)</span></div>
                 </div>
             </div>
@@ -939,7 +939,7 @@
             <!-- LIVE AI DEMO: HUGGING FACE INTEGRATION -->
             <div class="bg-surface rounded-xl p-6 border border-border shadow-sm mt-8">
                 <h3 class="text-xl font-bold mb-3 flex items-center gap-2" style="color: #8B5CF6;">
-                    <span>🏥</span> Live AI Demo: Tuberculosis Detection
+                    <span>🫁</span> Live AI Demo: Tuberculosis Detection
                 </h3>
                 <p class="text-sm text-secondary mb-2">
                     <a href="https://huggingface.co/spaces/shubhlokhugging/TB-Chest-Xray-Classification" target="_blank" rel="noopener noreferrer" class="text-accentB underline font-semibold">Live Demo: huggingface.co/spaces/shubhlokhugging/TB-Chest-Xray-Classification</a>
@@ -952,14 +952,39 @@
                     <li>A downloadable diagnostic DOCX report is generated for each scan.</li>
                 </ul>
 
-              
+                <!-- Sample Images only — interactive analysis removed -->
+
+                <!-- Sample Images -->
+                <div class="mb-2">
+                    <p class="text-sm font-semibold text-primary mb-3">📂 Sample X-Ray Images:</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl">
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="Data/Normal.jpg" alt="Normal Chest X-Ray" data-src="Data/Normal.jpg" draggable="true" class="xray-sample-img w-full max-w-[135px] rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-pointer hover:border-accentB transition-colors">
+                            <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">✓ Normal</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="Data/Normal.1.jpg" alt="Normal Chest X-Ray 2" data-src="Data/Normal.1.jpg" draggable="true" class="xray-sample-img w-full max-w-[135px] rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-pointer hover:border-accentB transition-colors">
+                            <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">✓ Normal</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="Data/TB.68.jpg" alt="TB Positive Chest X-Ray" data-src="Data/TB.68.jpg" draggable="true" class="xray-sample-img w-full max-w-[135px] rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-pointer hover:border-accentB transition-colors">
+                            <span class="text-xs font-semibold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full">⚠ TB Positive</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <img src="Data/TB.69.jpg" alt="TB Positive Chest X-Ray 2" data-src="Data/TB.69.jpg" draggable="true" class="xray-sample-img w-full max-w-[135px] rounded-lg border border-slate-700 object-cover aspect-square bg-slate-900 cursor-pointer hover:border-accentB transition-colors">
+                            <span class="text-xs font-semibold text-red-400 bg-red-400/10 px-2 py-0.5 rounded-full">⚠ TB Positive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <section id="tab-aistack" class="tab-content max-w-5xl mx-auto">
             <div class="mb-10">
                 <h2 class="text-4xl font-bold text-primary mb-4">AI-Driven Digital Therapeutics Solution Stack</h2>
                 <p class="text-lg text-secondary leading-relaxed border-l-4 border-accentC pl-4 bg-surface p-4 rounded-r shadow-sm">
-                    Modern healthcare platforms are not powered by a single AI technology â€” they are layered stacks where each tier delegates to the most appropriate model class. This section maps the five functional layers of a digital therapeutics architecture to the AI disciplines explored throughout this report.
+                    Modern healthcare platforms are not powered by a single AI technology — they are layered stacks where each tier delegates to the most appropriate model class. This section maps the five functional layers of a digital therapeutics architecture to the AI disciplines explored throughout this report.
                 </p>
             </div>
 
@@ -968,11 +993,11 @@
 
                 <!-- Layer Explorer -->
                 <div class="flex flex-wrap gap-2 justify-center mb-6" id="stack-layer-btns">
-                    <button onclick="showStackLayer('ui')"      id="stack-btn-ui"      class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:#06B6D4;border-color:#06B6D4;color:#0F172A">1 Â· Visualization &amp; UI</button>
-                    <button onclick="showStackLayer('info')"    id="stack-btn-info"    class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">2 Â· Information Broadcasting</button>
-                    <button onclick="showStackLayer('treat')"   id="stack-btn-treat"   class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">3 Â· Treatment &amp; Monitoring</button>
-                    <button onclick="showStackLayer('data')"    id="stack-btn-data"    class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">4 Â· Analytics &amp; Insights</button>
-                    <button onclick="showStackLayer('capture')" id="stack-btn-capture" class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">5 Â· Data Capture &amp; Storage</button>
+                    <button onclick="showStackLayer('ui')"      id="stack-btn-ui"      class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:#06B6D4;border-color:#06B6D4;color:#0F172A">1 · Visualization &amp; UI</button>
+                    <button onclick="showStackLayer('info')"    id="stack-btn-info"    class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">2 · Information Broadcasting</button>
+                    <button onclick="showStackLayer('treat')"   id="stack-btn-treat"   class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">3 · Treatment &amp; Monitoring</button>
+                    <button onclick="showStackLayer('data')"    id="stack-btn-data"    class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">4 · Analytics &amp; Insights</button>
+                    <button onclick="showStackLayer('capture')" id="stack-btn-capture" class="stack-layer-btn px-4 py-2 rounded-lg border text-xs font-semibold transition-all duration-200" style="background:transparent;border-color:#334155;color:#94A3B8">5 · Data Capture &amp; Storage</button>
                 </div>
 
                 <div id="stack-layer-panel" class="bg-slate-800 rounded-xl border border-slate-700 p-6" style="min-height:140px">
@@ -981,39 +1006,39 @@
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">Foundation Models (LLMs)</span>
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">Generative AI</span>
                         </div>
-                        <p class="text-sm text-secondary leading-relaxed">The interface layer is where LLMs earn their place as conversational agents â€” powering symptom triage chatbots, natural language search, and dynamic report narration. Generative AI enables adaptive UI copy that adjusts clinical complexity based on whether the user is a patient or a specialist, without requiring separate application builds.</p>
+                        <p class="text-sm text-secondary leading-relaxed">The interface layer is where LLMs earn their place as conversational agents — powering symptom triage chatbots, natural language search, and dynamic report narration. Generative AI enables adaptive UI copy that adjusts clinical complexity based on whether the user is a patient or a specialist, without requiring separate application builds.</p>
                     </div>
                     <div id="stack-panel-info" class="hidden">
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">Generative AI</span>
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">Transformer Retrieval</span>
                         </div>
-                        <p class="text-sm text-secondary leading-relaxed">Retrieval-Augmented Generation (RAG) pipelines built on transformer encoders let clinicians query vetted medical literature in natural language â€” the system retrieves, ranks, and synthesises evidence rather than hallucinating citations. Generative models then format findings to the right reading level and channel (push notification vs. clinical note vs. patient summary).</p>
+                        <p class="text-sm text-secondary leading-relaxed">Retrieval-Augmented Generation (RAG) pipelines built on transformer encoders let clinicians query vetted medical literature in natural language — the system retrieves, ranks, and synthesises evidence rather than hallucinating citations. Generative models then format findings to the right reading level and channel (push notification vs. clinical note vs. patient summary).</p>
                     </div>
                     <div id="stack-panel-treat" class="hidden">
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">CNN Vision Models</span>
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">Foundation Models</span>
                         </div>
-                        <p class="text-sm text-secondary leading-relaxed">CNNs underpin wearable signal classification â€” detecting arrhythmias from ECG patches or fall risk from accelerometer streams. Transformer-based clinical decision support (CDSS) models integrate heterogeneous inputs (labs, vitals, imaging) to predict deterioration risk hours earlier than rule-based systems, allowing proactive rather than reactive intervention.</p>
+                        <p class="text-sm text-secondary leading-relaxed">CNNs underpin wearable signal classification — detecting arrhythmias from ECG patches or fall risk from accelerometer streams. Transformer-based clinical decision support (CDSS) models integrate heterogeneous inputs (labs, vitals, imaging) to predict deterioration risk hours earlier than rule-based systems, allowing proactive rather than reactive intervention.</p>
                     </div>
                     <div id="stack-panel-data" class="hidden">
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">CNN Radiomics</span>
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#8B5CF620;color:#8B5CF6;border:1px solid #8B5CF640">Explainable GenAI</span>
                         </div>
-                        <p class="text-sm text-secondary leading-relaxed">Radiomic feature extraction via CNNs encodes thousands of quantitative imaging biomarkers that conventional analytics miss. Explainability layers â€” gradient-weighted class activation maps (Grad-CAM) and counterfactual explanations generated by language models â€” translate model confidence scores into auditable clinical reasoning, satisfying regulatory requirements like FDA's AI/ML action plan.</p>
+                        <p class="text-sm text-secondary leading-relaxed">Radiomic feature extraction via CNNs encodes thousands of quantitative imaging biomarkers that conventional analytics miss. Explainability layers — gradient-weighted class activation maps (Grad-CAM) and counterfactual explanations generated by language models — translate model confidence scores into auditable clinical reasoning, satisfying regulatory requirements like FDA's AI/ML action plan.</p>
                     </div>
                     <div id="stack-panel-capture" class="hidden">
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#EC489920;color:#EC4899;border:1px solid #EC489940">CNN Image Capture</span>
                             <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:#06B6D420;color:#06B6D4;border:1px solid #06B6D440">Foundation Model ETL</span>
                         </div>
-                        <p class="text-sm text-secondary leading-relaxed">Edge-deployed CNNs perform real-time image quality assessment and auto-segmentation at point-of-capture â€” rejecting blurry scans before they enter the pipeline. Transformer-based entity extraction from clinical notes and discharge summaries populates structured EHR fields automatically, cutting manual documentation burden while maintaining FHIR R4 / HL7 interoperability standards.</p>
+                        <p class="text-sm text-secondary leading-relaxed">Edge-deployed CNNs perform real-time image quality assessment and auto-segmentation at point-of-capture — rejecting blurry scans before they enter the pipeline. Transformer-based entity extraction from clinical notes and discharge summaries populates structured EHR fields automatically, cutting manual documentation burden while maintaining FHIR R4 / HL7 interoperability standards.</p>
                     </div>
                 </div>
 
-                <p class="text-xs text-secondary text-center mt-4">Cross-cutting enablers (Security, Interoperability, MLOps) apply to every layer â€” explore the <button onclick="switchTab('ethics')" class="underline hover:text-primary transition-colors">Ethics &amp; Challenges</button> tab for governance considerations.</p>
+                <p class="text-xs text-secondary text-center mt-4">Cross-cutting enablers (Security, Interoperability, MLOps) apply to every layer — explore the <button onclick="switchTab('ethics')" class="underline hover:text-primary transition-colors">Ethics &amp; Challenges</button> tab for governance considerations.</p>
             </div>
         </section>
 
@@ -1155,7 +1180,7 @@
             next.style.borderColor = n === 3 ? '#334155' : '#8B5CF6';
             next.style.color = n === 3 ? '#475569' : '#fff';
             next.style.cursor = n === 3 ? 'not-allowed' : 'pointer';
-            next.textContent = n === 3 ? 'Done âœ“' : 'Next â†’';
+            next.textContent = n === 3 ? 'Done ✓' : 'Next →';
         }
 
         function updateGenAIText(type) {
